@@ -1,0 +1,9 @@
+site_id,client_name,scenario,homepage_url,app_id,csm_owner
+site_a,Copperleaf Garden,"A stable, our script present",https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_a,EP-1001,Demo CSM
+site_b,Harbor Lane Shoes,B competitor added in page code (day 3),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_b,EP-1002,Demo CSM
+site_c,Tidewell Kitchen,C competitor added only through Google Tag Manager (day 2),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_c,EP-1003,Demo CSM
+site_d,Fernhill Books,"D our script removed (day 3), old service worker file left behind",https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_d,EP-1004,Demo CSM
+site_e,Bluestone Bikes,E our script replaced by a competitor (day 2),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_e,EP-1005,Demo CSM
+site_f,Maplecrest Pets,F bot protection returns 403 every day,https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_f,EP-1006,Demo CSM
+site_g,Quill & Ink Stationery,G one day of server error 500 (day 3),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_g,EP-1007,Demo CSM
+site_h,Saltmarsh Coffee,"H competitor named only in a blog post (day 2), not in a script",https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_h,EP-1008,Demo CSM

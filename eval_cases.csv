@@ -1,0 +1,41 @@
+case_id,site_id,scenario,day,expected,what_it_tests
+A1,site_a,"A stable, our script present",1,none,baseline
+A2,site_a,"A stable, our script present",2,none,no change
+A3,site_a,"A stable, our script present",3,none,no change
+A4,site_a,"A stable, our script present",4,none,no change
+A5,site_a,"A stable, our script present",5,none,no change
+B1,site_b,B competitor added in page code (day 3),1,none,baseline
+B2,site_b,B competitor added in page code (day 3),2,none,no change
+B3,site_b,B competitor added in page code (day 3),3,none,"competitor seen once, wait for confirmation"
+B4,site_b,B competitor added in page code (day 3),4,high,confirmed on second scan
+B5,site_b,B competitor added in page code (day 3),5,none,"already reported, no repeat"
+C1,site_c,C competitor added only through Google Tag Manager (day 2),1,none,"baseline, GTM container has only an analytics tag"
+C2,site_c,C competitor added only through Google Tag Manager (day 2),2,none,"competitor seen once inside GTM, wait"
+C3,site_c,C competitor added only through Google Tag Manager (day 2),3,high,confirmed on second scan
+C4,site_c,C competitor added only through Google Tag Manager (day 2),4,none,already reported
+C5,site_c,C competitor added only through Google Tag Manager (day 2),5,none,already reported
+D1,site_d,"D our script removed (day 3), old service worker file left behind",1,none,baseline
+D2,site_d,"D our script removed (day 3), old service worker file left behind",2,none,no change
+D3,site_d,"D our script removed (day 3), old service worker file left behind",3,none,"our script missing once, wait"
+D4,site_d,"D our script removed (day 3), old service worker file left behind",4,urgent,confirmed on second scan
+D5,site_d,"D our script removed (day 3), old service worker file left behind",5,none,already reported
+E1,site_e,E our script replaced by a competitor (day 2),1,none,baseline
+E2,site_e,E our script replaced by a competitor (day 2),2,none,"ours missing and competitor present once, wait"
+E3,site_e,E our script replaced by a competitor (day 2),3,urgent,"confirmed, ours missing wins: urgent"
+E4,site_e,E our script replaced by a competitor (day 2),4,none,already reported
+E5,site_e,E our script replaced by a competitor (day 2),5,none,already reported
+F1,site_f,F bot protection returns 403 every day,1,cannot_check,"403 bot protection: cannot check, no alert"
+F2,site_f,F bot protection returns 403 every day,2,cannot_check,"403 bot protection: cannot check, no alert"
+F3,site_f,F bot protection returns 403 every day,3,cannot_check,"403 bot protection: cannot check, no alert"
+F4,site_f,F bot protection returns 403 every day,4,cannot_check,"403 bot protection: cannot check, no alert"
+F5,site_f,F bot protection returns 403 every day,5,cannot_check,"403 bot protection: cannot check, no alert"
+G1,site_g,G one day of server error 500 (day 3),1,none,"baseline, GTM container has only an analytics tag"
+G2,site_g,G one day of server error 500 (day 3),2,none,no change
+G3,site_g,G one day of server error 500 (day 3),3,none,"500 error: skip the day, keep state"
+G4,site_g,G one day of server error 500 (day 3),4,none,no change
+G5,site_g,G one day of server error 500 (day 3),5,none,no change
+H1,site_h,"H competitor named only in a blog post (day 2), not in a script",1,none,baseline
+H2,site_h,"H competitor named only in a blog post (day 2), not in a script",2,none,competitor names only in blog text and JSON-LD: ignore
+H3,site_h,"H competitor named only in a blog post (day 2), not in a script",3,none,no change
+H4,site_h,"H competitor named only in a blog post (day 2), not in a script",4,none,no change
+H5,site_h,"H competitor named only in a blog post (day 2), not in a script",5,none,no change

@@ -1,0 +1,18 @@
+run_id,run_at,suite,case_id,site_id,day,expected,actual,passed,outcome,detail
+EVAL-20261109-204030,2026-11-09 20:41,drafts,DRAFT-site_c-day3,site_c,3,all checks pass,all checks pass,true,ok,All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,drafts,DRAFT-site_e-day3,site_e,3,all checks pass,all checks pass,true,ok,All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,drafts,DRAFT-site_b-day4,site_b,4,all checks pass,all checks pass,true,ok,All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,drafts,DRAFT-site_d-day4,site_d,4,all checks pass,all checks pass,true,ok,All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K01,,0,flagged,flagged,true,ok,names a competitor -> names another vendor: OneSignal
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K02,,0,flagged,flagged,true,ok,competitor name in lower case -> names another vendor: Pushwoosh
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K03,,0,flagged,flagged,true,ok,"says we scan the site -> reveals monitoring: ""scan"""
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K04,,0,flagged,flagged,true,ok,"talks about their code -> reveals monitoring: ""your code"""
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K05,,0,flagged,flagged,true,ok,"says we noticed a switch -> reveals monitoring: ""we noticed"" | reveals monitoring: ""another provider"""
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K06,,0,flagged,flagged,true,ok,"mentions Tag Manager -> reveals monitoring: ""tag manager"""
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K07,,0,flagged,flagged,true,ok,asks for a call -> asks for a call or meeting
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K08,,0,flagged,flagged,true,ok,offers free work -> free work or discount
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K09,,0,passes,passes,true,ok,good technical-help email -> All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K10,,0,passes,passes,true,ok,good value email -> All checks passed
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K11,,0,flagged,flagged,true,ok,thanks the client for a report they never sent -> assumes the client reported a problem (thanks or apology)
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K12,,0,flagged,flagged,true,ok,"states the problem as a fact -> states the problem as a fact instead of ""it looks like / may have"""
+EVAL-20261109-204030,2026-11-09 20:41,draft-checker,K13,,0,flagged,flagged,true,ok,careful body but the subject states the problem -> subject states the problem as a fact

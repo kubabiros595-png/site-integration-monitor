@@ -1,0 +1,11 @@
+vendor,is_ours,where_to_look,pattern,sw_path,source
+"ExamplePush (ours, fictional)",true,"script,gtm",cdn.examplepush.example/sdk/,,fictional product used in this project
+"ExamplePush (ours, fictional)",true,sw,cdn.examplepush.example/sdk/v2/sw.js,/examplepush-sw.js,fictional product used in this project
+OneSignal,false,"script,gtm",cdn.onesignal.com/sdks/web/,,"https://documentation.onesignal.com/docs/en/onesignal-service-worker.md (page script OneSignalSDK.page.js, v16)"
+OneSignal,false,sw,cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js,/OneSignalSDKWorker.js,https://documentation.onesignal.com/docs/en/onesignal-service-worker.md
+PushEngage,false,"script,gtm",clientcdn.pushengage.com/sdks/,,https://www.pushengage.com/security-incident-tampered-script-served-via-pushengage/ (names the embed scripts pushengage-web-sdk.js and pushengage-subscription.js)
+iZooto,false,"script,gtm",cdn.izooto.com/scripts/,,https://ampforwp.com/tutorials/article/how-to-setup-izooto-in-amp/ (script URL cdn.izooto.com/scripts/<script id>)
+Pushwoosh,false,"script,gtm",cdn.pushwoosh.com/webpush/,,https://docs.pushwoosh.com/developer/pushwoosh-sdk/web-push-notifications/web-push-sdk-30/ (pushwoosh-web-notifications.js)
+Pushwoosh,false,sw,cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js,/pushwoosh-service-worker.js,https://docs.pushwoosh.com/developer/pushwoosh-sdk/web-push-notifications/web-push-sdk-30/
+Webpushr,false,"script,gtm",cdn.webpushr.com/,,https://forum.webpushr.com/t/workbox-and-webpushr/805 (host cdn.webpushr.com)
+Webpushr,false,sw,cdn.webpushr.com/sw-server.min.js,/webpushr_sw.js,https://forum.webpushr.com/t/workbox-and-webpushr/805

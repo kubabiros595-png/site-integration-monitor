@@ -1,0 +1,610 @@
+site_id,day,status_code,html,gtm_id,gtm_container,sw_files
+site_a,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Copperleaf Garden</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1001""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1001"");</script>
+</head><body>
+<header><a href=""/"">Copperleaf Garden</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Seeds and tools for small gardens</h1>
+<section class=""products""><article><h2>Heirloom tomato seeds</h2><p>Twelve varieties.</p></article><article><h2>Hand trowel</h2><p>Ash handle.</p></article></section>
+</main>
+<footer>&copy; 2026 Copperleaf Garden. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1001"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1001""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_a,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Copperleaf Garden</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1001""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1001"");</script>
+</head><body>
+<header><a href=""/"">Copperleaf Garden</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Seeds and tools for small gardens</h1>
+<section class=""products""><article><h2>Heirloom tomato seeds</h2><p>Twelve varieties.</p></article><article><h2>Hand trowel</h2><p>Ash handle.</p></article></section>
+</main>
+<footer>&copy; 2026 Copperleaf Garden. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1001"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1001""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_a,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Copperleaf Garden</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1001""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1001"");</script>
+</head><body>
+<header><a href=""/"">Copperleaf Garden</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Seeds and tools for small gardens</h1>
+<section class=""products""><article><h2>Heirloom tomato seeds</h2><p>Twelve varieties.</p></article><article><h2>Hand trowel</h2><p>Ash handle.</p></article></section>
+</main>
+<footer>&copy; 2026 Copperleaf Garden. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1001"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1001""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_a,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Copperleaf Garden</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1001""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1001"");</script>
+</head><body>
+<header><a href=""/"">Copperleaf Garden</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Seeds and tools for small gardens</h1>
+<section class=""products""><article><h2>Heirloom tomato seeds</h2><p>Twelve varieties.</p></article><article><h2>Hand trowel</h2><p>Ash handle.</p></article></section>
+</main>
+<footer>&copy; 2026 Copperleaf Garden. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1001"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1001""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_a,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Copperleaf Garden</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1001""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1001"");</script>
+</head><body>
+<header><a href=""/"">Copperleaf Garden</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Seeds and tools for small gardens</h1>
+<section class=""products""><article><h2>Heirloom tomato seeds</h2><p>Twelve varieties.</p></article><article><h2>Hand trowel</h2><p>Ash handle.</p></article></section>
+</main>
+<footer>&copy; 2026 Copperleaf Garden. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1001"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1001""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_b,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Harbor Lane Shoes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1002""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1002"");</script>
+</head><body>
+<header><a href=""/"">Harbor Lane Shoes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Shoes made for walking the coast</h1>
+<section class=""products""><article><h2>Dune runner</h2><p>Light and grippy.</p></article><article><h2>Harbor boot</h2><p>Waxed leather.</p></article></section>
+</main>
+<footer>&copy; 2026 Harbor Lane Shoes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1002"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1002""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_b,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Harbor Lane Shoes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1002""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1002"");</script>
+</head><body>
+<header><a href=""/"">Harbor Lane Shoes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Shoes made for walking the coast</h1>
+<section class=""products""><article><h2>Dune runner</h2><p>Light and grippy.</p></article><article><h2>Harbor boot</h2><p>Waxed leather.</p></article></section>
+</main>
+<footer>&copy; 2026 Harbor Lane Shoes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1002"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1002""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_b,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Harbor Lane Shoes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1002""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1002"");</script>
+</head><body>
+<header><a href=""/"">Harbor Lane Shoes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Shoes made for walking the coast</h1>
+<section class=""products""><article><h2>Dune runner</h2><p>Light and grippy.</p></article><article><h2>Harbor boot</h2><p>Waxed leather.</p></article></section>
+</main>
+<footer>&copy; 2026 Harbor Lane Shoes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1002"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1002""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+<script src=""https://clientcdn.pushengage.com/sdks/pushengage-web-sdk.js"" async></script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_b,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Harbor Lane Shoes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1002""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1002"");</script>
+</head><body>
+<header><a href=""/"">Harbor Lane Shoes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Shoes made for walking the coast</h1>
+<section class=""products""><article><h2>Dune runner</h2><p>Light and grippy.</p></article><article><h2>Harbor boot</h2><p>Waxed leather.</p></article></section>
+</main>
+<footer>&copy; 2026 Harbor Lane Shoes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1002"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1002""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+<script src=""https://clientcdn.pushengage.com/sdks/pushengage-web-sdk.js"" async></script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_b,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Harbor Lane Shoes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1002""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1002"");</script>
+</head><body>
+<header><a href=""/"">Harbor Lane Shoes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Shoes made for walking the coast</h1>
+<section class=""products""><article><h2>Dune runner</h2><p>Light and grippy.</p></article><article><h2>Harbor boot</h2><p>Waxed leather.</p></article></section>
+</main>
+<footer>&copy; 2026 Harbor Lane Shoes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1002"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1002""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+<script src=""https://clientcdn.pushengage.com/sdks/pushengage-web-sdk.js"" async></script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_c,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Tidewell Kitchen</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1003""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1003"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TDW4K2P');</script>
+</head><body>
+<header><a href=""/"">Tidewell Kitchen</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Kitchenware for everyday cooks</h1>
+<section class=""products""><article><h2>Carbon steel pan</h2><p>Seasoned and ready.</p></article><article><h2>Bread knife</h2><p>Long serrated blade.</p></article></section>
+</main>
+<footer>&copy; 2026 Tidewell Kitchen. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1003"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1003""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-TDW4K2P,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-TDW4K2P and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_c,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Tidewell Kitchen</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1003""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1003"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TDW4K2P');</script>
+</head><body>
+<header><a href=""/"">Tidewell Kitchen</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Kitchenware for everyday cooks</h1>
+<section class=""products""><article><h2>Carbon steel pan</h2><p>Seasoned and ready.</p></article><article><h2>Bread knife</h2><p>Long serrated blade.</p></article></section>
+</main>
+<footer>&copy; 2026 Tidewell Kitchen. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1003"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1003""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-TDW4K2P,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-TDW4K2P and escape HTML the same way.
+var data = {""resource"":{""version"":""11"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""},{""function"":""__html"",""tag_id"":2,""vtp_html"":""\u003cscript src=\""https:\/\/cdn.onesignal.com\/sdks\/web\/v16\/OneSignalSDK.page.js\"" defer\u003e\u003c\/script\u003e\u003cscript\u003ewindow.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:\""00000000-0000-0000-0000-000000000000\""});});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_c,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Tidewell Kitchen</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1003""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1003"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TDW4K2P');</script>
+</head><body>
+<header><a href=""/"">Tidewell Kitchen</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Kitchenware for everyday cooks</h1>
+<section class=""products""><article><h2>Carbon steel pan</h2><p>Seasoned and ready.</p></article><article><h2>Bread knife</h2><p>Long serrated blade.</p></article></section>
+</main>
+<footer>&copy; 2026 Tidewell Kitchen. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1003"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1003""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-TDW4K2P,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-TDW4K2P and escape HTML the same way.
+var data = {""resource"":{""version"":""11"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""},{""function"":""__html"",""tag_id"":2,""vtp_html"":""\u003cscript src=\""https:\/\/cdn.onesignal.com\/sdks\/web\/v16\/OneSignalSDK.page.js\"" defer\u003e\u003c\/script\u003e\u003cscript\u003ewindow.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:\""00000000-0000-0000-0000-000000000000\""});});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_c,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Tidewell Kitchen</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1003""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1003"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TDW4K2P');</script>
+</head><body>
+<header><a href=""/"">Tidewell Kitchen</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Kitchenware for everyday cooks</h1>
+<section class=""products""><article><h2>Carbon steel pan</h2><p>Seasoned and ready.</p></article><article><h2>Bread knife</h2><p>Long serrated blade.</p></article></section>
+</main>
+<footer>&copy; 2026 Tidewell Kitchen. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1003"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1003""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-TDW4K2P,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-TDW4K2P and escape HTML the same way.
+var data = {""resource"":{""version"":""11"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""},{""function"":""__html"",""tag_id"":2,""vtp_html"":""\u003cscript src=\""https:\/\/cdn.onesignal.com\/sdks\/web\/v16\/OneSignalSDK.page.js\"" defer\u003e\u003c\/script\u003e\u003cscript\u003ewindow.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:\""00000000-0000-0000-0000-000000000000\""});});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_c,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Tidewell Kitchen</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1003""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1003"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TDW4K2P');</script>
+</head><body>
+<header><a href=""/"">Tidewell Kitchen</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Kitchenware for everyday cooks</h1>
+<section class=""products""><article><h2>Carbon steel pan</h2><p>Seasoned and ready.</p></article><article><h2>Bread knife</h2><p>Long serrated blade.</p></article></section>
+</main>
+<footer>&copy; 2026 Tidewell Kitchen. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1003"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1003""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-TDW4K2P,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-TDW4K2P and escape HTML the same way.
+var data = {""resource"":{""version"":""11"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""},{""function"":""__html"",""tag_id"":2,""vtp_html"":""\u003cscript src=\""https:\/\/cdn.onesignal.com\/sdks\/web\/v16\/OneSignalSDK.page.js\"" defer\u003e\u003c\/script\u003e\u003cscript\u003ewindow.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:\""00000000-0000-0000-0000-000000000000\""});});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_d,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Fernhill Books</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1004""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1004"");</script>
+</head><body>
+<header><a href=""/"">Fernhill Books</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>An independent bookshop online</h1>
+<section class=""products""><article><h2>Staff picks</h2><p>Ten books we loved.</p></article><article><h2>Gift cards</h2><p>Any amount.</p></article></section>
+</main>
+<footer>&copy; 2026 Fernhill Books. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1004"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1004""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_d,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Fernhill Books</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1004""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1004"");</script>
+</head><body>
+<header><a href=""/"">Fernhill Books</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>An independent bookshop online</h1>
+<section class=""products""><article><h2>Staff picks</h2><p>Ten books we loved.</p></article><article><h2>Gift cards</h2><p>Any amount.</p></article></section>
+</main>
+<footer>&copy; 2026 Fernhill Books. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1004"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1004""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_d,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Fernhill Books</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1004""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1004"");</script>
+</head><body>
+<header><a href=""/"">Fernhill Books</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>An independent bookshop online</h1>
+<section class=""products""><article><h2>Staff picks</h2><p>Ten books we loved.</p></article><article><h2>Gift cards</h2><p>Any amount.</p></article></section>
+</main>
+<footer>&copy; 2026 Fernhill Books. A fictional shop used for testing.</footer>
+
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_d,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Fernhill Books</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1004""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1004"");</script>
+</head><body>
+<header><a href=""/"">Fernhill Books</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>An independent bookshop online</h1>
+<section class=""products""><article><h2>Staff picks</h2><p>Ten books we loved.</p></article><article><h2>Gift cards</h2><p>Any amount.</p></article></section>
+</main>
+<footer>&copy; 2026 Fernhill Books. A fictional shop used for testing.</footer>
+
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_d,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Fernhill Books</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1004""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1004"");</script>
+</head><body>
+<header><a href=""/"">Fernhill Books</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>An independent bookshop online</h1>
+<section class=""products""><article><h2>Staff picks</h2><p>Ten books we loved.</p></article><article><h2>Gift cards</h2><p>Any amount.</p></article></section>
+</main>
+<footer>&copy; 2026 Fernhill Books. A fictional shop used for testing.</footer>
+
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_e,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Bluestone Bikes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1005""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1005"");</script>
+</head><body>
+<header><a href=""/"">Bluestone Bikes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Bikes and parts for city riders</h1>
+<section class=""products""><article><h2>City frame</h2><p>Steel, eight gears.</p></article><article><h2>Rear light</h2><p>USB charging.</p></article></section>
+</main>
+<footer>&copy; 2026 Bluestone Bikes. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1005"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1005""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_e,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Bluestone Bikes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1005""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1005"");</script>
+</head><body>
+<header><a href=""/"">Bluestone Bikes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Bikes and parts for city riders</h1>
+<section class=""products""><article><h2>City frame</h2><p>Steel, eight gears.</p></article><article><h2>Rear light</h2><p>USB charging.</p></article></section>
+</main>
+<footer>&copy; 2026 Bluestone Bikes. A fictional shop used for testing.</footer>
+<script type=""text/javascript"" src=""//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"" async></script>
+<script type=""text/javascript"">var Pushwoosh = Pushwoosh || [];Pushwoosh.push([""init"",{logLevel:""error"",applicationCode:""00000-00000"",serviceWorkerUrl:""/pushwoosh-service-worker.js""}]);</script>
+</body></html>",,,"{""/pushwoosh-service-worker.js"":""importScripts('https://cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js' + self.location.search);\n""}"
+site_e,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Bluestone Bikes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1005""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1005"");</script>
+</head><body>
+<header><a href=""/"">Bluestone Bikes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Bikes and parts for city riders</h1>
+<section class=""products""><article><h2>City frame</h2><p>Steel, eight gears.</p></article><article><h2>Rear light</h2><p>USB charging.</p></article></section>
+</main>
+<footer>&copy; 2026 Bluestone Bikes. A fictional shop used for testing.</footer>
+<script type=""text/javascript"" src=""//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"" async></script>
+<script type=""text/javascript"">var Pushwoosh = Pushwoosh || [];Pushwoosh.push([""init"",{logLevel:""error"",applicationCode:""00000-00000"",serviceWorkerUrl:""/pushwoosh-service-worker.js""}]);</script>
+</body></html>",,,"{""/pushwoosh-service-worker.js"":""importScripts('https://cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js' + self.location.search);\n""}"
+site_e,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Bluestone Bikes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1005""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1005"");</script>
+</head><body>
+<header><a href=""/"">Bluestone Bikes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Bikes and parts for city riders</h1>
+<section class=""products""><article><h2>City frame</h2><p>Steel, eight gears.</p></article><article><h2>Rear light</h2><p>USB charging.</p></article></section>
+</main>
+<footer>&copy; 2026 Bluestone Bikes. A fictional shop used for testing.</footer>
+<script type=""text/javascript"" src=""//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"" async></script>
+<script type=""text/javascript"">var Pushwoosh = Pushwoosh || [];Pushwoosh.push([""init"",{logLevel:""error"",applicationCode:""00000-00000"",serviceWorkerUrl:""/pushwoosh-service-worker.js""}]);</script>
+</body></html>",,,"{""/pushwoosh-service-worker.js"":""importScripts('https://cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js' + self.location.search);\n""}"
+site_e,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Bluestone Bikes</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1005""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1005"");</script>
+</head><body>
+<header><a href=""/"">Bluestone Bikes</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Bikes and parts for city riders</h1>
+<section class=""products""><article><h2>City frame</h2><p>Steel, eight gears.</p></article><article><h2>Rear light</h2><p>USB charging.</p></article></section>
+</main>
+<footer>&copy; 2026 Bluestone Bikes. A fictional shop used for testing.</footer>
+<script type=""text/javascript"" src=""//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js"" async></script>
+<script type=""text/javascript"">var Pushwoosh = Pushwoosh || [];Pushwoosh.push([""init"",{logLevel:""error"",applicationCode:""00000-00000"",serviceWorkerUrl:""/pushwoosh-service-worker.js""}]);</script>
+</body></html>",,,"{""/pushwoosh-service-worker.js"":""importScripts('https://cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js' + self.location.search);\n""}"
+site_f,1,403,<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>,,,{}
+site_f,2,403,<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>,,,{}
+site_f,3,403,<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>,,,{}
+site_f,4,403,<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>,,,{}
+site_f,5,403,<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>,,,{}
+site_g,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Quill & Ink Stationery</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1007""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1007"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QLL8M3R');</script>
+</head><body>
+<header><a href=""/"">Quill & Ink Stationery</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Paper goods for people who write</h1>
+<section class=""products""><article><h2>Dot grid notebook</h2><p>A5, 160 pages.</p></article><article><h2>Fountain pen ink</h2><p>Blue-black.</p></article></section>
+</main>
+<footer>&copy; 2026 Quill & Ink Stationery. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1007"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1007""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-QLL8M3R,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-QLL8M3R and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_g,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Quill & Ink Stationery</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1007""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1007"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QLL8M3R');</script>
+</head><body>
+<header><a href=""/"">Quill & Ink Stationery</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Paper goods for people who write</h1>
+<section class=""products""><article><h2>Dot grid notebook</h2><p>A5, 160 pages.</p></article><article><h2>Fountain pen ink</h2><p>Blue-black.</p></article></section>
+</main>
+<footer>&copy; 2026 Quill & Ink Stationery. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1007"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1007""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-QLL8M3R,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-QLL8M3R and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_g,3,500,<!doctype html><html><body><h1>500 Internal Server Error</h1></body></html>,GTM-QLL8M3R,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-QLL8M3R and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+",{}
+site_g,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Quill & Ink Stationery</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1007""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1007"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QLL8M3R');</script>
+</head><body>
+<header><a href=""/"">Quill & Ink Stationery</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Paper goods for people who write</h1>
+<section class=""products""><article><h2>Dot grid notebook</h2><p>A5, 160 pages.</p></article><article><h2>Fountain pen ink</h2><p>Blue-black.</p></article></section>
+</main>
+<footer>&copy; 2026 Quill & Ink Stationery. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1007"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1007""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-QLL8M3R,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-QLL8M3R and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_g,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Quill & Ink Stationery</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1007""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1007"");</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-QLL8M3R');</script>
+</head><body>
+<header><a href=""/"">Quill & Ink Stationery</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Paper goods for people who write</h1>
+<section class=""products""><article><h2>Dot grid notebook</h2><p>A5, 160 pages.</p></article><article><h2>Fountain pen ink</h2><p>Blue-black.</p></article></section>
+</main>
+<footer>&copy; 2026 Quill & Ink Stationery. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1007"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1007""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",GTM-QLL8M3R,"// Simulated Google Tag Manager container for a fictional site. Real containers are served by
+// https://www.googletagmanager.com/gtm.js?id=GTM-QLL8M3R and escape HTML the same way.
+var data = {""resource"":{""version"":""10"",""tags"":[{""function"":""__html"",""tag_id"":1,""vtp_html"":""\u003cscript\u003ewindow.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\""page_ready\""});\u003c\/script\u003e""}]}};
+","{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_h,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Saltmarsh Coffee</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1008""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1008"");</script>
+</head><body>
+<header><a href=""/"">Saltmarsh Coffee</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Small-batch coffee roasted weekly</h1>
+<section class=""products""><article><h2>House espresso</h2><p>Chocolate and cherry.</p></article><article><h2>Hand grinder</h2><p>Ceramic burrs.</p></article></section>
+</main>
+<footer>&copy; 2026 Saltmarsh Coffee. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_h,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Saltmarsh Coffee</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1008""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1008"");</script>
+</head><body>
+<header><a href=""/"">Saltmarsh Coffee</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Small-batch coffee roasted weekly</h1>
+<section class=""products""><article><h2>House espresso</h2><p>Chocolate and cherry.</p></article><article><h2>Hand grinder</h2><p>Ceramic burrs.</p></article></section>
+<article class=""post""><h2>Which web push tool do coffee shops use? Our notes</h2>
+<p>We looked at how other small shops send browser notifications. Many guides mention OneSignal, Pushwoosh and Webpushr.
+A typical install guide asks you to add a line like <code>&lt;script src=""https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js""&gt;</code> to your page.
+You can read more on <a href=""https://onesignal.com"">their website</a>. We are happy with our current setup and are not changing anything.</p></article>
+<script type=""application/ld+json"">{""@context"":""https://schema.org"",""@type"":""BlogPosting"",""headline"":""Which web push tool do coffee shops use? Our notes"",""articleBody"":""Guides for OneSignal ask you to load https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js; Pushwoosh uses cdn.pushwoosh.com/webpush/v3.""}</script>
+</main>
+<footer>&copy; 2026 Saltmarsh Coffee. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_h,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Saltmarsh Coffee</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1008""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1008"");</script>
+</head><body>
+<header><a href=""/"">Saltmarsh Coffee</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Small-batch coffee roasted weekly</h1>
+<section class=""products""><article><h2>House espresso</h2><p>Chocolate and cherry.</p></article><article><h2>Hand grinder</h2><p>Ceramic burrs.</p></article></section>
+<article class=""post""><h2>Which web push tool do coffee shops use? Our notes</h2>
+<p>We looked at how other small shops send browser notifications. Many guides mention OneSignal, Pushwoosh and Webpushr.
+A typical install guide asks you to add a line like <code>&lt;script src=""https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js""&gt;</code> to your page.
+You can read more on <a href=""https://onesignal.com"">their website</a>. We are happy with our current setup and are not changing anything.</p></article>
+<script type=""application/ld+json"">{""@context"":""https://schema.org"",""@type"":""BlogPosting"",""headline"":""Which web push tool do coffee shops use? Our notes"",""articleBody"":""Guides for OneSignal ask you to load https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js; Pushwoosh uses cdn.pushwoosh.com/webpush/v3.""}</script>
+</main>
+<footer>&copy; 2026 Saltmarsh Coffee. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_h,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Saltmarsh Coffee</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1008""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1008"");</script>
+</head><body>
+<header><a href=""/"">Saltmarsh Coffee</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Small-batch coffee roasted weekly</h1>
+<section class=""products""><article><h2>House espresso</h2><p>Chocolate and cherry.</p></article><article><h2>Hand grinder</h2><p>Ceramic burrs.</p></article></section>
+<article class=""post""><h2>Which web push tool do coffee shops use? Our notes</h2>
+<p>We looked at how other small shops send browser notifications. Many guides mention OneSignal, Pushwoosh and Webpushr.
+A typical install guide asks you to add a line like <code>&lt;script src=""https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js""&gt;</code> to your page.
+You can read more on <a href=""https://onesignal.com"">their website</a>. We are happy with our current setup and are not changing anything.</p></article>
+<script type=""application/ld+json"">{""@context"":""https://schema.org"",""@type"":""BlogPosting"",""headline"":""Which web push tool do coffee shops use? Our notes"",""articleBody"":""Guides for OneSignal ask you to load https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js; Pushwoosh uses cdn.pushwoosh.com/webpush/v3.""}</script>
+</main>
+<footer>&copy; 2026 Saltmarsh Coffee. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_h,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Saltmarsh Coffee</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1008""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1008"");</script>
+</head><body>
+<header><a href=""/"">Saltmarsh Coffee</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Small-batch coffee roasted weekly</h1>
+<section class=""products""><article><h2>House espresso</h2><p>Chocolate and cherry.</p></article><article><h2>Hand grinder</h2><p>Ceramic burrs.</p></article></section>
+<article class=""post""><h2>Which web push tool do coffee shops use? Our notes</h2>
+<p>We looked at how other small shops send browser notifications. Many guides mention OneSignal, Pushwoosh and Webpushr.
+A typical install guide asks you to add a line like <code>&lt;script src=""https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js""&gt;</code> to your page.
+You can read more on <a href=""https://onesignal.com"">their website</a>. We are happy with our current setup and are not changing anything.</p></article>
+<script type=""application/ld+json"">{""@context"":""https://schema.org"",""@type"":""BlogPosting"",""headline"":""Which web push tool do coffee shops use? Our notes"",""articleBody"":""Guides for OneSignal ask you to load https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js; Pushwoosh uses cdn.pushwoosh.com/webpush/v3.""}</script>
+</main>
+<footer>&copy; 2026 Saltmarsh Coffee. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"

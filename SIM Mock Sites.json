@@ -1,0 +1,256 @@
+{
+  "name": "SIM Mock Sites",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "sim-site",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "2441b3b4-8228-46bd-a53c-7a2fa21e6ed6",
+      "name": "Mock site request",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "mYpdgyHDlMFWpC1h",
+          "cachedResultName": "SIM Mock Pages"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "={{ $json.query.file === 'gtm' ? 'gtm_id' : 'site_id' }}",
+              "condition": "eq",
+              "keyValue": "={{ $json.query.file === 'gtm' ? String($json.query.id || '') : String($json.query.site || '') }}"
+            },
+            {
+              "keyName": "day",
+              "condition": "eq",
+              "keyValue": "={{ Number($json.query.day || 1) }}"
+            }
+          ]
+        },
+        "returnAll": false,
+        "limit": 1
+      },
+      "id": "caf8c9d7-62e9-48df-b39c-eb064eb22831",
+      "name": "Find stored file",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        0
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Turns one stored row into an HTTP response, the way a real web server would answer.\n// file=page -> the HTML page; file=sw&path=/x.js -> a service worker file; file=gtm&id=GTM-... -> the tag container.\nconst q = $('Mock site request').first().json.query || {};\nconst row = $input.first().json || {};\nconst file = String(q.file || 'page');\nconst send = (status, body, type) => [{ json: { status, body, content_type: type } }];\n\nif (!row.site_id) return send(404, 'Not found', 'text/plain');\n// The GTM container is hosted by Google, not by the shop, so the shop's own errors do not affect it.\nif (file === 'gtm') return row.gtm_container ? send(200, row.gtm_container, 'application/javascript') : send(404, 'Not found', 'text/plain');\n// Bot protection and server errors hit every file on the shop's own server.\nif (Number(row.status_code) !== 200) return send(Number(row.status_code), row.html, 'text/html');\nif (file === 'page') return send(200, row.html, 'text/html; charset=utf-8');\nif (file === 'sw') {\n  let files = {};\n  try { files = JSON.parse(row.sw_files || '{}'); } catch (e) { files = {}; }\n  const body = files[String(q.path || '')];\n  return body ? send(200, body, 'application/javascript') : send(404, 'Not found', 'text/plain');\n}\nreturn send(400, 'Unknown file type', 'text/plain');\n"
+      },
+      "id": "b63462f7-70b0-4d83-b33c-2803c039d5fa",
+      "name": "Build response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.body }}",
+        "options": {
+          "responseCode": "={{ $json.status }}",
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "={{ $json.content_type }}"
+              }
+            ]
+          }
+        }
+      },
+      "id": "3e114d53-8836-4ab2-b2cd-6d42998a02ca",
+      "name": "Send response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "28705a38-4b47-4866-bb76-e2cfad42d6ed",
+      "name": "Rebuild mock pages",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "mYpdgyHDlMFWpC1h",
+          "cachedResultName": "SIM Mock Pages"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "site_id",
+              "condition": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "94f7400e-2f21-4108-bac6-adc6226ded57",
+      "name": "Clear old pages",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        200
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Builds the 8 fictional client sites x 5 simulated days and returns one row per site and day.\n// Nothing here is a real company: every shop is invented, \"ExamplePush\" is our invented product.\n// Competitor snippets copy the public install patterns from each vendor's documentation (see SIM Signatures).\nconst OURS_SCRIPT = (app) => '<script src=\"https://cdn.examplepush.example/sdk/v2/examplepush.js\" data-app-id=\"' + app + '\" async></script>\\n'\n  + '<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([\"init\",{appId:\"' + app + '\"}]);'\n  + 'if(\"serviceWorker\" in navigator){navigator.serviceWorker.register(\"/examplepush-sw.js\");}</script>';\nconst OURS_SW = \"importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\\n\";\nconst GTAG = (g) => '<script async src=\"https://www.googletagmanager.com/gtag/js?id=' + g + '\"></script>\\n'\n  + '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(\"js\",new Date());gtag(\"config\",\"' + g + '\");</script>';\nconst GTM_SNIPPET = (id) => \"<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});\"\n  + \"var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;\"\n  + \"j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','\" + id + \"');</script>\";\nconst PUSHENGAGE = '<script src=\"https://clientcdn.pushengage.com/sdks/pushengage-web-sdk.js\" async></script>';\nconst PUSHWOOSH = '<script type=\"text/javascript\" src=\"//cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js\" async></script>\\n'\n  + '<script type=\"text/javascript\">var Pushwoosh = Pushwoosh || [];Pushwoosh.push([\"init\",{logLevel:\"error\",applicationCode:\"00000-00000\",serviceWorkerUrl:\"/pushwoosh-service-worker.js\"}]);</script>';\nconst PUSHWOOSH_SW = \"importScripts('https://cdn.pushwoosh.com/webpush/v3/pushwoosh-service-worker.js' + self.location.search);\\n\";\nconst ONESIGNAL_TAG_HTML = '<script src=\"https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js\" defer></script>'\n  + '<script>window.OneSignalDeferred=window.OneSignalDeferred||[];OneSignalDeferred.push(async function(OneSignal){await OneSignal.init({appId:\"00000000-0000-0000-0000-000000000000\"});});</script>';\nconst ANALYTICS_TAG = '<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:\"page_ready\"});</script>';\n\n// A GTM container escapes HTML inside a JavaScript string: < becomes \\u003c and / becomes \\/.\nconst gtmContainer = (id, version, tags) => {\n  const esc = (h) => JSON.stringify(h).slice(1, -1).replace(/</g, '\\\\u003c').replace(/>/g, '\\\\u003e').replace(/\\//g, '\\\\/');\n  const list = tags.map((h, i) => '{\"function\":\"__html\",\"tag_id\":' + (i + 1) + ',\"vtp_html\":\"' + esc(h) + '\"}');\n  return '// Simulated Google Tag Manager container for a fictional site. Real containers are served by\\n'\n    + '// https://www.googletagmanager.com/gtm.js?id=' + id + ' and escape HTML the same way.\\n'\n    + 'var data = {\"resource\":{\"version\":\"' + version + '\",\"tags\":[' + list.join(',') + ']}};\\n';\n};\nconst page = (name, tagline, head, main, foot) => `<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><title>${name}</title>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<link rel=\"stylesheet\" href=\"/assets/site.css\">\n${head}\n</head><body>\n<header><a href=\"/\">${name}</a><nav><a href=\"/shop\">Shop</a> <a href=\"/blog\">Blog</a> <a href=\"/contact\">Contact</a></nav></header>\n<main>\n<h1>${tagline}</h1>\n${main}\n</main>\n<footer>&copy; 2026 ${name}. A fictional shop used for testing.</footer>\n${foot}\n</body></html>`;\nconst products = (p) => '<section class=\"products\"><article><h2>' + p[0] + '</h2><p>' + p[1] + '</p></article><article><h2>' + p[2] + '</h2><p>' + p[3] + '</p></article></section>';\n\n// Scenario H: competitor names appear only as text, a link and JSON-LD data. None of it runs as code.\nconst BLOG_H = `<article class=\"post\"><h2>Which web push tool do coffee shops use? Our notes</h2>\n<p>We looked at how other small shops send browser notifications. Many guides mention OneSignal, Pushwoosh and Webpushr.\nA typical install guide asks you to add a line like <code>&lt;script src=\"https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js\"&gt;</code> to your page.\nYou can read more on <a href=\"https://onesignal.com\">their website</a>. We are happy with our current setup and are not changing anything.</p></article>\n<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Which web push tool do coffee shops use? Our notes\",\"articleBody\":\"Guides for OneSignal ask you to load https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js; Pushwoosh uses cdn.pushwoosh.com/webpush/v3.\"}</script>`;\n\nconst SITES = [\n  { id: 'site_a', name: 'Copperleaf Garden', tag: 'Seeds and tools for small gardens', app: 'EP-1001', p: ['Heirloom tomato seeds', 'Twelve varieties.', 'Hand trowel', 'Ash handle.'] },\n  { id: 'site_b', name: 'Harbor Lane Shoes', tag: 'Shoes made for walking the coast', app: 'EP-1002', p: ['Dune runner', 'Light and grippy.', 'Harbor boot', 'Waxed leather.'] },\n  { id: 'site_c', name: 'Tidewell Kitchen', tag: 'Kitchenware for everyday cooks', app: 'EP-1003', p: ['Carbon steel pan', 'Seasoned and ready.', 'Bread knife', 'Long serrated blade.'] },\n  { id: 'site_d', name: 'Fernhill Books', tag: 'An independent bookshop online', app: 'EP-1004', p: ['Staff picks', 'Ten books we loved.', 'Gift cards', 'Any amount.'] },\n  { id: 'site_e', name: 'Bluestone Bikes', tag: 'Bikes and parts for city riders', app: 'EP-1005', p: ['City frame', 'Steel, eight gears.', 'Rear light', 'USB charging.'] },\n  { id: 'site_f', name: 'Maplecrest Pets', tag: 'Food and toys for happy pets', app: 'EP-1006', p: ['Grain-free kibble', 'For adult dogs.', 'Rope toy', 'Washable.'] },\n  { id: 'site_g', name: 'Quill & Ink Stationery', tag: 'Paper goods for people who write', app: 'EP-1007', p: ['Dot grid notebook', 'A5, 160 pages.', 'Fountain pen ink', 'Blue-black.'] },\n  { id: 'site_h', name: 'Saltmarsh Coffee', tag: 'Small-batch coffee roasted weekly', app: 'EP-1008', p: ['House espresso', 'Chocolate and cherry.', 'Hand grinder', 'Ceramic burrs.'] },\n];\nconst GTM_IDS = { site_c: 'GTM-TDW4K2P', site_g: 'GTM-QLL8M3R' };\n\nconst rows = [];\nfor (const s of SITES) {\n  for (let day = 1; day <= 5; day++) {\n    let status = 200, gtmId = '', gtm = '', sw = { '/examplepush-sw.js': OURS_SW };\n    let head = GTAG('G-' + s.app.replace('EP-', 'DEMO'));\n    let foot = OURS_SCRIPT(s.app);\n    let main = products(s.p);\n    if (GTM_IDS[s.id]) {\n      gtmId = GTM_IDS[s.id];\n      head += '\\n' + GTM_SNIPPET(gtmId);\n      const tags = [ANALYTICS_TAG];\n      if (s.id === 'site_c' && day >= 2) tags.push(ONESIGNAL_TAG_HTML);        // C: competitor only inside GTM\n      gtm = gtmContainer(gtmId, 10 + (s.id === 'site_c' && day >= 2 ? 1 : 0), tags);\n    }\n    if (s.id === 'site_b' && day >= 3) foot += '\\n' + PUSHENGAGE;              // B: competitor in page code\n    if (s.id === 'site_d' && day >= 3) foot = '';                              // D: our loader removed, old SW file stays\n    if (s.id === 'site_e' && day >= 2) { foot = PUSHWOOSH; sw = { '/pushwoosh-service-worker.js': PUSHWOOSH_SW }; } // E: replaced\n    if (s.id === 'site_h' && day >= 2) main = products(s.p) + '\\n' + BLOG_H;  // H: names only in text\n    let html = page(s.name, s.tag, head, main, foot);\n    if (s.id === 'site_f') { status = 403; html = '<!doctype html><html><body><h1>Access denied</h1><p>Automated requests are blocked on this site.</p></body></html>'; sw = {}; gtm = ''; }\n    if (s.id === 'site_g' && day === 3) { status = 500; html = '<!doctype html><html><body><h1>500 Internal Server Error</h1></body></html>'; sw = {}; }\n    rows.push({ json: { site_id: s.id, day, status_code: status, html, gtm_id: gtmId, gtm_container: gtm, sw_files: JSON.stringify(sw) } });\n  }\n}\nreturn rows;\n"
+      },
+      "id": "0704888e-8f68-4d43-b5e6-6d70b89fa179",
+      "name": "Generate 40 pages",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        200
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "mYpdgyHDlMFWpC1h",
+          "cachedResultName": "SIM Mock Pages"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        },
+        "options": {}
+      },
+      "id": "598ce90e-c5bc-4e44-b730-7416f85df3de",
+      "name": "Save pages",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        200
+      ]
+    }
+  ],
+  "connections": {
+    "Mock site request": {
+      "main": [
+        [
+          {
+            "node": "Find stored file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find stored file": {
+      "main": [
+        [
+          {
+            "node": "Build response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build response": {
+      "main": [
+        [
+          {
+            "node": "Send response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rebuild mock pages": {
+      "main": [
+        [
+          {
+            "node": "Clear old pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear old pages": {
+      "main": [
+        [
+          {
+            "node": "Generate 40 pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate 40 pages": {
+      "main": [
+        [
+          {
+            "node": "Save pages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Warsaw"
+  },
+  "pinData": {},
+  "meta": {
+    "note": "Portfolio project on fictional data. Exported without credentials."
+  }
+}

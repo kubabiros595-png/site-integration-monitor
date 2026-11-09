@@ -1,0 +1,441 @@
+{
+  "name": "SIM Eval",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "240f822b-8f81-4220-a950-9ad129af8e4f",
+      "name": "Run all tests",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "nn4LpBBWA7pQ8L9m",
+          "cachedResultName": "SIM State"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "scope",
+              "condition": "eq",
+              "keyValue": "eval"
+            }
+          ]
+        }
+      },
+      "id": "f3a8a9ab-6491-406c-a6da-279375734815",
+      "name": "Clear eval state",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        0
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// One test run = the scanner called 5 times in a row, once per simulated day, in the separate \"eval\" scope.\n// The eval scope has its own state rows, so tests never touch the live state.\nconst runId = 'EVAL-' + $now.setZone('Europe/Warsaw').toFormat('yyyyMMdd-HHmmss');\nreturn [1, 2, 3, 4, 5].map((day) => ({ json: { scope: 'eval', day, run_id: runId } }));\n"
+      },
+      "id": "924e028f-2b66-4960-9d10-f34fc72f1280",
+      "name": "Days 1 to 5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "1b117afc-f987-4203-99e0-de2cc5d4313d",
+      "name": "One day at a time",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        240,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "source": "database",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "aVt5W9T2J0jkgqJ9",
+          "cachedResultName": "Site Integration Monitor"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "b0d83dd0-7a04-4a7e-88de-7d55efbd1175",
+      "name": "Scan one simulated day",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.4,
+      "position": [
+        480,
+        200
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "UN4IEmwcnOg1GNaY",
+          "cachedResultName": "SIM Scan Log"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "run_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Days 1 to 5').first().json.run_id }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "id": "c42496e8-8282-4e24-8683-4f21875ed51d",
+      "name": "Scan log of this run",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        400
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "VphptS2uUdUOvtSG",
+          "cachedResultName": "SIM Eval Cases"
+        },
+        "returnAll": true
+      },
+      "id": "4093a059-ea1c-4fc7-9072-efe493790f1a",
+      "name": "Expected results",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        0
+      ],
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// 40 checkpoints (8 sites x 5 days). Expected answers were written before the first run (SIM Eval Cases).\n// missed = an alert was expected but none came; false alarm = an alert came when none was expected.\nconst runId = $('Days 1 to 5').first().json.run_id;\nconst log = $('Scan log of this run').all().map((i) => i.json).filter((r) => r.run_id === runId);\nconst cases = $input.all().map((i) => i.json).filter((c) => c.case_id);\nconst runAt = $now.setZone('Europe/Warsaw').toFormat('yyyy-MM-dd HH:mm');\nconst actualOf = (r) => (r.alert ? r.level : r.result === 'cannot_check' ? 'cannot_check' : 'none');\nconst isAlert = (v) => v === 'urgent' || v === 'high';\nreturn cases.sort((a, b) => a.case_id.localeCompare(b.case_id)).map((c) => {\n  const rows = log.filter((r) => r.site_id === c.site_id && Number(r.day) === Number(c.day));\n  const actual = rows.length === 1 ? actualOf(rows[0]) : rows.length === 0 ? 'no scan row' : rows.length + ' scan rows';\n  let outcome = 'ok';\n  if (actual !== c.expected) {\n    if (isAlert(c.expected) && !isAlert(actual)) outcome = 'missed';\n    else if (!isAlert(c.expected) && isAlert(actual)) outcome = 'false alarm';\n    else outcome = 'wrong result';\n  }\n  const r = rows[0] || {};\n  return { json: { run_id: runId, run_at: runAt, suite: 'detection', case_id: c.case_id, site_id: c.site_id, day: Number(c.day),\n    expected: c.expected, actual, passed: outcome === 'ok', outcome,\n    detail: [r.result, r.signal, r.note].filter(Boolean).join(' | ').slice(0, 400) } };\n});\n"
+      },
+      "id": "d9f72959-28a9-4628-8d36-636d23cbebdc",
+      "name": "Compare expected vs actual",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "y82uHLitxFuSKbVa",
+          "cachedResultName": "SIM Test Results"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "run_id": "={{ $json.run_id }}",
+            "run_at": "={{ $json.run_at }}",
+            "suite": "={{ $json.suite }}",
+            "case_id": "={{ $json.case_id }}",
+            "site_id": "={{ $json.site_id }}",
+            "day": "={{ $json.day }}",
+            "expected": "={{ $json.expected }}",
+            "actual": "={{ $json.actual }}",
+            "passed": "={{ $json.passed }}",
+            "outcome": "={{ $json.outcome }}",
+            "detail": "={{ $json.detail }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "run_id",
+              "displayName": "run_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "run_at",
+              "displayName": "run_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "suite",
+              "displayName": "suite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "case_id",
+              "displayName": "case_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "site_id",
+              "displayName": "site_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "day",
+              "displayName": "day",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expected",
+              "displayName": "expected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "actual",
+              "displayName": "actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "passed",
+              "displayName": "passed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "outcome",
+              "displayName": "outcome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "detail",
+              "displayName": "detail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "0beef31e-7339-4431-8bc8-efb37d5f49d1",
+      "name": "Save test results",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const rows = $('Compare expected vs actual').all().map((i) => i.json);\nconst count = (o) => rows.filter((r) => r.outcome === o).length;\nreturn [{ json: { run_id: rows[0] && rows[0].run_id, checkpoints: rows.length, passed: rows.filter((r) => r.passed).length,\n  missed: count('missed'), false_alarms: count('false alarm'), wrong_result: count('wrong result'),\n  failures: rows.filter((r) => !r.passed).map((r) => r.case_id + ': expected ' + r.expected + ', got ' + r.actual + ' (' + r.detail + ')') } }];\n"
+      },
+      "id": "0839e064-72f4-481b-a9d0-4dcab42d5580",
+      "name": "Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        0
+      ],
+      "executeOnce": true
+    }
+  ],
+  "connections": {
+    "Run all tests": {
+      "main": [
+        [
+          {
+            "node": "Clear eval state",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clear eval state": {
+      "main": [
+        [
+          {
+            "node": "Days 1 to 5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scan log of this run": {
+      "main": [
+        [
+          {
+            "node": "Expected results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Expected results": {
+      "main": [
+        [
+          {
+            "node": "Compare expected vs actual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare expected vs actual": {
+      "main": [
+        [
+          {
+            "node": "Save test results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save test results": {
+      "main": [
+        [
+          {
+            "node": "Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One day at a time": {
+      "main": [
+        [
+          {
+            "node": "Scan log of this run",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Scan one simulated day",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scan one simulated day": {
+      "main": [
+        [
+          {
+            "node": "One day at a time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Days 1 to 5": {
+      "main": [
+        [
+          {
+            "node": "One day at a time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Warsaw"
+  },
+  "pinData": {},
+  "meta": {
+    "note": "Portfolio project on fictional data. Exported without credentials."
+  }
+}

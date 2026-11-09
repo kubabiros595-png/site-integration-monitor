@@ -1,0 +1,424 @@
+{
+  "name": "SIM Draft Eval",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "772214da-21c8-4aaa-a4e3-fd9971b5881d",
+      "name": "Run draft tests",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "LH4j0b661sg3tHXm",
+          "cachedResultName": "SIM Alerts"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "scope",
+              "condition": "eq",
+              "keyValue": "eval"
+            },
+            {
+              "keyName": "review_status",
+              "condition": "eq",
+              "keyValue": "waiting for draft"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "id": "55661892-836b-456f-a511-aee41e232b5a",
+      "name": "Eval alerts waiting for a draft",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        0
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Drafts the alerts of the newest detection test run, plus 13 hand-written emails the checker must judge correctly.\nconst alerts = $input.all().map((i) => i.json).filter((a) => a.run_id && a.scope === 'eval');\nconst runId = alerts.map((a) => a.run_id).sort().slice(-1)[0] || '';\nconst sign = '\\nBest regards,\\nCustomer Success team';\nconst canaries = [\n  { id: 'K01', expect: 'flagged', what: 'names a competitor', subject: 'Ideas for your spring alerts', body: 'Hi [CLIENT] team,\\nMany shops that tried OneSignal come back for our back-in-stock alerts. Want a checklist?' + sign },\n  { id: 'K02', expect: 'flagged', what: 'competitor name in lower case', subject: 'Quick idea', body: 'Hi [CLIENT] team,\\nUnlike pushwoosh, we can send a reminder for your bestsellers. Shall I send the steps?' + sign },\n  { id: 'K03', expect: 'flagged', what: 'says we scan the site', subject: 'Your notifications', body: 'Hi [CLIENT] team,\\nOur daily scan shows notifications may have stopped. Did anything change recently?' + sign },\n  { id: 'K04', expect: 'flagged', what: 'talks about their code', subject: 'Setup check', body: 'Hi [CLIENT] team,\\nYour code no longer loads our tag after the last update. Could your developer check it?' + sign },\n  { id: 'K05', expect: 'flagged', what: 'says we noticed a switch', subject: 'Checking in', body: 'Hi [CLIENT] team,\\nWe noticed you moved to another provider. Is there anything we could do better?' + sign },\n  { id: 'K06', expect: 'flagged', what: 'mentions Tag Manager', subject: 'Small fix', body: 'Hi [CLIENT] team,\\nI looked at your Google Tag Manager container and one tag looks new. Can you confirm?' + sign },\n  { id: 'K07', expect: 'flagged', what: 'asks for a call', subject: 'Notifications', body: 'Hi [CLIENT] team,\\nNotifications may have stopped showing. Can we jump on a quick call this week?' + sign },\n  { id: 'K08', expect: 'flagged', what: 'offers free work', subject: 'We can help', body: 'Hi [CLIENT] team,\\nWe can rebuild your whole setup for free this month. Would that help?' + sign },\n  { id: 'K09', expect: 'passes', topic: 'delivery_check', what: 'good technical-help email', subject: 'Are your notifications showing?', body: 'Hi [CLIENT] team,\\nIt looks like notifications may have stopped showing for some of your visitors. Did anything change on the site recently, such as a theme update or a new cookie banner? The setup guide at [SETUP_GUIDE_LINK] lets your web developer check the installation in a few minutes. We can check the settings on our side as soon as you reply. Has the site been updated in the last week?' + sign },\n  { id: 'K10', expect: 'passes', what: 'good value email', subject: 'A spring idea for your shop', body: 'Hi [CLIENT] team,\\nSpring is when gardeners restock. A back-in-stock alert for your most wanted seed mixes brings back people who missed them the first time. It takes one short message and works best on the day stock returns. I have a short checklist for setting it up. Would you like me to send it? Just reply \"yes\".' + sign },\n  { id: 'K11', expect: 'flagged', topic: 'delivery_check', what: 'thanks the client for a report they never sent', subject: 'Your notifications', body: 'Hi [CLIENT] team,\\nThank you for reaching out about notifications that may have stopped showing. Did anything change on the site recently?' + sign },\n  { id: 'K12', expect: 'flagged', topic: 'delivery_check', what: 'states the problem as a fact', subject: 'Your notifications', body: 'Hi [CLIENT] team,\\nNotifications have stopped showing on your site. The setup guide at [SETUP_GUIDE_LINK] helps your developer check it. Did anything change recently?' + sign },\n  { id: 'K13', expect: 'flagged', topic: 'delivery_check', what: 'careful body but the subject states the problem', subject: 'Notifications stopped showing', body: 'Hi [CLIENT] team,\\nIt looks like notifications may have stopped showing for some of your visitors. Did anything change on the site recently?' + sign },\n];\nreturn [{ json: { run_id: runId, canaries } }];\n"
+      },
+      "id": "cf3d757b-fc00-4202-bae3-693b2d575679",
+      "name": "Test input",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "source": "database",
+        "workflowId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "7cZmoHYU6j89Iozb",
+          "cachedResultName": "SIM Drafts"
+        },
+        "mode": "once",
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "id": "3fcbf8ca-b903-48ca-8d3b-2f0c48fbc2a9",
+      "name": "Write and check drafts",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.4,
+      "position": [
+        720,
+        0
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "LH4j0b661sg3tHXm",
+          "cachedResultName": "SIM Alerts"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "run_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Test input').first().json.run_id }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "id": "54609389-d553-423a-ad36-c371cad3145f",
+      "name": "Drafts of this run",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        0
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "// Two checks: (1) every AI draft of this run passed the code checks; (2) the checker judged all 10 hand-written emails correctly.\nconst runId = $('Test input').first().json.run_id;\nconst drafts = $('Drafts of this run').all().map((i) => i.json).filter((a) => a.run_id === runId);\nconst runAt = $now.setZone('Europe/Warsaw').toFormat('yyyy-MM-dd HH:mm');\nreturn drafts.map((a) => ({ json: { run_id: runId, run_at: runAt, suite: 'drafts', case_id: 'DRAFT-' + a.site_id + '-day' + a.day,\n  site_id: a.site_id, day: Number(a.day), expected: 'all checks pass', actual: a.check_passed ? 'all checks pass' : 'flagged',\n  passed: a.check_passed === true, outcome: a.check_passed ? 'ok' : 'flagged', detail: String(a.check_notes || '').slice(0, 400) } }));\n"
+      },
+      "id": "dd6f2924-36be-4777-a662-9e93897eda6c",
+      "name": "Compare drafts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "y82uHLitxFuSKbVa",
+          "cachedResultName": "SIM Test Results"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "run_id": "={{ $json.run_id }}",
+            "run_at": "={{ $json.run_at }}",
+            "suite": "={{ $json.suite }}",
+            "case_id": "={{ $json.case_id }}",
+            "site_id": "={{ $json.site_id }}",
+            "day": "={{ $json.day }}",
+            "expected": "={{ $json.expected }}",
+            "actual": "={{ $json.actual }}",
+            "passed": "={{ $json.passed }}",
+            "outcome": "={{ $json.outcome }}",
+            "detail": "={{ $json.detail }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "run_id",
+              "displayName": "run_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "run_at",
+              "displayName": "run_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "suite",
+              "displayName": "suite",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "case_id",
+              "displayName": "case_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "site_id",
+              "displayName": "site_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "day",
+              "displayName": "day",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "expected",
+              "displayName": "expected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "actual",
+              "displayName": "actual",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "passed",
+              "displayName": "passed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "boolean",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "outcome",
+              "displayName": "outcome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "detail",
+              "displayName": "detail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d1db0b03-fe7d-4833-b62d-10522805f8ba",
+      "name": "Save draft test results",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "y82uHLitxFuSKbVa",
+          "cachedResultName": "SIM Test Results"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "run_id",
+              "condition": "eq",
+              "keyValue": "={{ $('Test input').first().json.run_id }}"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "id": "d6ac2b27-a715-43a8-906b-f03107e5218f",
+      "name": "Checker results",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1680,
+        0
+      ],
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "language": "javaScript",
+        "jsCode": "const runId = $('Test input').first().json.run_id;\nconst drafts = $('Compare drafts').all().map((i) => i.json);\nconst checker = $('Checker results').all().map((i) => i.json).filter((r) => r.run_id === runId && r.suite === 'draft-checker');\nreturn [{ json: { run_id: runId, drafts: drafts.length, drafts_passed: drafts.filter((d) => d.passed).length,\n  checker_cases: checker.length, checker_correct: checker.filter((c) => c.passed === true).length,\n  problems: drafts.filter((d) => !d.passed).map((d) => d.case_id + ': ' + d.detail).concat(checker.filter((c) => c.passed !== true).map((c) => c.case_id + ': ' + c.detail)) } }];\n"
+      },
+      "id": "4a99b4a0-99e1-4fa7-9900-33564fdb8bfd",
+      "name": "Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        0
+      ],
+      "executeOnce": true
+    }
+  ],
+  "connections": {
+    "Run draft tests": {
+      "main": [
+        [
+          {
+            "node": "Eval alerts waiting for a draft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Eval alerts waiting for a draft": {
+      "main": [
+        [
+          {
+            "node": "Test input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Test input": {
+      "main": [
+        [
+          {
+            "node": "Write and check drafts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write and check drafts": {
+      "main": [
+        [
+          {
+            "node": "Drafts of this run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Drafts of this run": {
+      "main": [
+        [
+          {
+            "node": "Compare drafts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compare drafts": {
+      "main": [
+        [
+          {
+            "node": "Save draft test results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save draft test results": {
+      "main": [
+        [
+          {
+            "node": "Checker results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Checker results": {
+      "main": [
+        [
+          {
+            "node": "Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Warsaw"
+  },
+  "pinData": {},
+  "meta": {
+    "note": "Portfolio project on fictional data. Exported without credentials."
+  }
+}

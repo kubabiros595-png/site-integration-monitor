@@ -12,7 +12,7 @@
           ]
         }
       },
-      "id": "f168771e-5019-4ec3-b9e5-74813b36dbfa",
+      "id": "1947b6a0-cf07-4d61-a4f6-469b331bfd1d",
       "name": "Daily at 6:40",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
@@ -23,7 +23,7 @@
     },
     {
       "parameters": {},
-      "id": "ee3c8217-5ddc-427c-b148-fe2634956adf",
+      "id": "0094a643-161b-4e70-a857-0657f7d3d999",
       "name": "Run manually",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -36,7 +36,7 @@
       "parameters": {
         "inputSource": "passthrough"
       },
-      "id": "66f75889-4530-458b-9639-3fcc31d25ec8",
+      "id": "82292fd5-2562-4f72-9de5-e30284f9a599",
       "name": "When called by eval",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
@@ -51,7 +51,7 @@
         "language": "javaScript",
         "jsCode": "// One scan run. The daily schedule runs in \"live\" scope; the test workflow passes scope \"eval\", a day and a run id.\n// The fictional sites have 5 versions (days 1-5). Outside tests the simulated day follows the calendar.\nconst input = $input.first().json || {};\nconst scope = input.scope === 'eval' ? 'eval' : 'live';\nconst day = Number(input.day) >= 1 && Number(input.day) <= 5 ? Number(input.day) : ($now.ordinal % 5) + 1;\nconst runId = input.run_id || ('LIVE-' + $now.setZone('Europe/Warsaw').toFormat('yyyyMMdd-HHmm'));\nreturn [{ json: { scope, day, run_id: runId, started_at: $now.toISO() } }];\n"
       },
-      "id": "bdd9ff4e-5870-4a9b-aeee-6ccc76f40e82",
+      "id": "46dabdd2-1579-47e0-9edd-a4d70470a99a",
       "name": "Run context",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -72,7 +72,7 @@
         },
         "returnAll": true
       },
-      "id": "47597453-91d5-467f-afaf-f0c9ec49fae4",
+      "id": "9f40b303-fb84-4351-bd28-ba40f6249b34",
       "name": "Get clients",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -94,7 +94,7 @@
         },
         "returnAll": true
       },
-      "id": "d7616a52-e681-4547-a059-61a5ffc1f5f6",
+      "id": "d63ee671-d608-44fe-bf62-c5284e38adc1",
       "name": "Get signatures",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -110,7 +110,7 @@
         "language": "javaScript",
         "jsCode": "// One request per client homepage. Only public pages, once a day, no login, no tricks.\nconst ctx = $('Run context').first().json;\nconst clients = $('Get clients').all().map((i) => i.json).filter((c) => c.site_id && c.homepage_url);\n// SIMULATION ADAPTER: the fictional sites are served by one n8n webhook, so the simulated day travels as a query parameter.\n// In production this would simply be the client's homepage URL.\nconst pageUrl = (c) => c.homepage_url + '&file=page&day=' + ctx.day;\nreturn clients.map((c) => ({ json: { ...ctx, site_id: c.site_id, client_name: c.client_name, homepage_url: c.homepage_url, url: pageUrl(c) } }));\n"
       },
-      "id": "6fa72f1f-05e6-4fef-9cc5-7aa8dc517dd0",
+      "id": "77be0aa0-539b-43dc-9187-67fa13fc226f",
       "name": "Plan page requests",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -150,7 +150,7 @@
           }
         }
       },
-      "id": "30b093fd-c448-4e5b-89fb-95dcd1b6a3d8",
+      "id": "92696a72-d637-425b-bc94-d7068253a513",
       "name": "Fetch homepage",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -166,7 +166,7 @@
         "language": "javaScript",
         "jsCode": "// ---- shared parser: which scripts would actually run on this page? ----\n// Only <script> tags count. Text, links, <code> blocks, HTML comments and data blocks\n// such as <script type=\"application/ld+json\"> are never executed, so they are never evidence.\nconst RUNNABLE_TYPES = ['', 'text/javascript', 'application/javascript', 'module', 'text/ecmascript', 'application/ecmascript'];\nfunction parseScripts(html) {\n  const clean = String(html || '').replace(/<!--[\\s\\S]*?-->/g, '');\n  const out = [];\n  const re = /<script\\b([^>]*)>([\\s\\S]*?)<\\/script\\s*>/gi;\n  let m;\n  while ((m = re.exec(clean))) {\n    const attrs = m[1] || '';\n    const typeMatch = attrs.match(/\\btype\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    const type = typeMatch ? typeMatch[1].toLowerCase() : '';\n    if (!RUNNABLE_TYPES.includes(type)) continue;\n    const srcMatch = attrs.match(/\\bsrc\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    let src = srcMatch ? srcMatch[1] : '';\n    if (src.startsWith('//')) src = 'https:' + src;\n    out.push({ src, code: (m[2] || '').trim() });\n  }\n  return out;\n}\nconst gtmIdsIn = (scripts) => [...new Set(scripts.flatMap((s) => (s.src + ' ' + s.code).match(/\\bGTM-[A-Z0-9]{4,10}\\b/g) || []))];\nconst swRegistered = (scripts) => [...new Set(scripts.flatMap((s) => [...s.code.matchAll(/serviceWorker\\.register\\(\\s*[\"']([^\"']+)[\"']/g)].map((x) => x[1])))];\n// ---- end of shared parser ----\n\n// For every page that loaded (HTTP 200): find GTM container IDs and service worker paths, and plan those fetches.\n// Service worker paths = the standard paths from the signature table + any path the page itself registers.\nconst ctx = $('Run context').first().json;\nconst plans = $('Plan page requests').all().map((i) => i.json);\nconst sigs = $('Get signatures').all().map((i) => i.json).filter((s) => s.vendor);\nconst standardSwPaths = [...new Set(sigs.map((s) => s.sw_path).filter(Boolean))];\n// SIMULATION ADAPTER: in production a service worker URL is new URL(path, homepage) and a container is\n// https://www.googletagmanager.com/gtm.js?id=<GTM ID>. Here both come from the mock webhook.\nconst swUrl = (p, path) => p.homepage_url + '&file=sw&path=' + encodeURIComponent(path) + '&day=' + ctx.day;\nconst gtmUrl = (p, id) => p.homepage_url.split('?')[0] + '?file=gtm&id=' + encodeURIComponent(id) + '&day=' + ctx.day;\nconst bodyOf = (r) => (typeof r.data === 'string' ? r.data : typeof r.body === 'string' ? r.body : '');\n\nconst jobs = [];\n$input.all().forEach((item, i) => {\n  const p = plans[i];\n  const r = item.json || {};\n  if (Number(r.statusCode) !== 200) return; // blocked or broken: we do not try other files to get around it\n  const scripts = parseScripts(bodyOf(r));\n  swRegistered(scripts).concat(standardSwPaths).filter((v, k, a) => a.indexOf(v) === k)\n    .forEach((path) => jobs.push({ json: { site_id: p.site_id, kind: 'sw', file: path, url: swUrl(p, path) } }));\n  gtmIdsIn(scripts).forEach((id) => jobs.push({ json: { site_id: p.site_id, kind: 'gtm', file: id, url: gtmUrl(p, id) } }));\n});\n// Keeps the run going on a day when no page loaded (e.g. every site blocked): one empty job, no request is made.\nif (!jobs.length) jobs.push({ json: { site_id: '', kind: 'none', file: '', url: '' } });\nreturn jobs;\n"
       },
-      "id": "17a23f22-567b-4934-a1a9-82d022e13603",
+      "id": "142292d5-0901-499b-97bf-0ea72242a378",
       "name": "Plan file checks",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -206,7 +206,7 @@
           }
         }
       },
-      "id": "ee713ef1-2f51-47ea-8ba0-de1d4b0d58d2",
+      "id": "2264f417-8adf-4505-9955-0d5c471b67ac",
       "name": "Fetch service workers and GTM",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -220,9 +220,9 @@
       "parameters": {
         "mode": "runOnceForAllItems",
         "language": "javaScript",
-        "jsCode": "// ---- shared parser: which scripts would actually run on this page? ----\n// Only <script> tags count. Text, links, <code> blocks, HTML comments and data blocks\n// such as <script type=\"application/ld+json\"> are never executed, so they are never evidence.\nconst RUNNABLE_TYPES = ['', 'text/javascript', 'application/javascript', 'module', 'text/ecmascript', 'application/ecmascript'];\nfunction parseScripts(html) {\n  const clean = String(html || '').replace(/<!--[\\s\\S]*?-->/g, '');\n  const out = [];\n  const re = /<script\\b([^>]*)>([\\s\\S]*?)<\\/script\\s*>/gi;\n  let m;\n  while ((m = re.exec(clean))) {\n    const attrs = m[1] || '';\n    const typeMatch = attrs.match(/\\btype\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    const type = typeMatch ? typeMatch[1].toLowerCase() : '';\n    if (!RUNNABLE_TYPES.includes(type)) continue;\n    const srcMatch = attrs.match(/\\bsrc\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    let src = srcMatch ? srcMatch[1] : '';\n    if (src.startsWith('//')) src = 'https:' + src;\n    out.push({ src, code: (m[2] || '').trim() });\n  }\n  return out;\n}\nconst gtmIdsIn = (scripts) => [...new Set(scripts.flatMap((s) => (s.src + ' ' + s.code).match(/\\bGTM-[A-Z0-9]{4,10}\\b/g) || []))];\nconst swRegistered = (scripts) => [...new Set(scripts.flatMap((s) => [...s.code.matchAll(/serviceWorker\\.register\\(\\s*[\"']([^\"']+)[\"']/g)].map((x) => x[1])))];\n// ---- end of shared parser ----\n\n// RULE-BASED DETECTION. No AI. A vendor counts as installed only when its loader is found in code that runs:\n// a <script> on the page or a tag inside the page's GTM container. Service worker files are extra evidence.\nconst sigs = $('Get signatures').all().map((i) => i.json).filter((s) => s.vendor);\nconst plans = $('Plan page requests').all().map((i) => i.json);\nconst pages = $('Fetch homepage').all().map((i) => i.json);\nconst jobs = $('Plan file checks').all().map((i) => i.json);\nconst files = $input.all().map((i) => i.json);\nconst bodyOf = (r) => (typeof r.data === 'string' ? r.data : typeof r.body === 'string' ? r.body : '');\nconst pageSigs = sigs.filter((s) => String(s.where_to_look).includes('script') || String(s.where_to_look).includes('gtm'));\nconst swSigs = sigs.filter((s) => String(s.where_to_look).includes('sw'));\n// GTM stores tag HTML as an escaped JavaScript string: < is <, \\/ is /, \\\" is \".\nconst unescapeGtm = (t) => String(t).replace(/\\\\u003c/gi, '<').replace(/\\\\u003e/gi, '>').replace(/\\\\u0026/gi, '&').replace(/\\\\\\//g, '/').replace(/\\\\\"/g, '\"');\nconst snippetAround = (text, needle) => {\n  const at = text.toLowerCase().indexOf(needle.toLowerCase());\n  if (at < 0) return '';\n  return text.slice(Math.max(0, at - 40), at + needle.length + 40).replace(/\\s+/g, ' ').trim();\n};\n// Checks one list of runnable scripts against the page signatures.\nfunction matchScripts(scripts, whereLabel, fileLabel) {\n  const found = [];\n  scripts.forEach((s) => {\n    const text = (s.src + '\\n' + s.code);\n    pageSigs.forEach((sig) => {\n      if (text.toLowerCase().includes(String(sig.pattern).toLowerCase())) {\n        found.push({ vendor: sig.vendor, is_ours: sig.is_ours === true, where: whereLabel, file: fileLabel,\n          fragment: s.src && s.src.toLowerCase().includes(String(sig.pattern).toLowerCase()) ? '<script src=\"' + s.src + '\">' : snippetAround(s.code, sig.pattern) });\n      }\n    });\n  });\n  return found;\n}\n\nreturn plans.map((p, i) => {\n  const page = pages[i] || {};\n  const status = Number(page.statusCode) || 0;\n  const evidence = [];\n  const swNotes = [];\n  if (status === 200) {\n    evidence.push(...matchScripts(parseScripts(bodyOf(page)), 'page script', 'homepage HTML'));\n    jobs.forEach((job, k) => {\n      if (job.site_id !== p.site_id) return;\n      const r = files[k] || {};\n      const ok = Number(r.statusCode) === 200;\n      if (job.kind === 'gtm') {\n        if (!ok) { swNotes.push('GTM container ' + job.file + ' not readable (HTTP ' + (r.statusCode || 'error') + ')'); return; }\n        evidence.push(...matchScripts(parseScripts(unescapeGtm(bodyOf(r))), 'GTM container', 'gtm.js?id=' + job.file));\n      }\n      if (job.kind === 'sw' && ok) {\n        const body = bodyOf(r);\n        swSigs.forEach((sig) => {\n          if (body.toLowerCase().includes(String(sig.pattern).toLowerCase())) {\n            evidence.push({ vendor: sig.vendor, is_ours: sig.is_ours === true, where: 'service worker', file: job.file, fragment: snippetAround(body, sig.pattern) });\n          }\n        });\n      }\n    });\n  }\n  // One evidence line per vendor + place + file is enough.\n  const seen = new Set();\n  const uniq = evidence.filter((e) => { const k = e.vendor + e.where + e.file; if (seen.has(k)) return false; seen.add(k); return true; });\n  const loaders = uniq.filter((e) => e.where !== 'service worker');\n  const oursFound = loaders.some((e) => e.is_ours);\n  const competitors = [...new Set(loaders.filter((e) => !e.is_ours).map((e) => e.vendor))].sort();\n  const oursSwOnly = !oursFound && uniq.some((e) => e.is_ours && e.where === 'service worker');\n  if (oursSwOnly) swNotes.push('our service worker file is still on the server, but no page loads our script');\n  return { json: { run_id: p.run_id, scope: p.scope, day: p.day, site_id: p.site_id, client_name: p.client_name,\n    http_status: status, ours_found: oursFound, competitors, evidence: uniq, notes: swNotes } };\n});\n"
+        "jsCode": "// ---- shared parser: which scripts would actually run on this page? ----\n// Only <script> tags count. Text, links, <code> blocks, HTML comments and data blocks\n// such as <script type=\"application/ld+json\"> are never executed, so they are never evidence.\nconst RUNNABLE_TYPES = ['', 'text/javascript', 'application/javascript', 'module', 'text/ecmascript', 'application/ecmascript'];\nfunction parseScripts(html) {\n  const clean = String(html || '').replace(/<!--[\\s\\S]*?-->/g, '');\n  const out = [];\n  const re = /<script\\b([^>]*)>([\\s\\S]*?)<\\/script\\s*>/gi;\n  let m;\n  while ((m = re.exec(clean))) {\n    const attrs = m[1] || '';\n    const typeMatch = attrs.match(/\\btype\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    const type = typeMatch ? typeMatch[1].toLowerCase() : '';\n    if (!RUNNABLE_TYPES.includes(type)) continue;\n    const srcMatch = attrs.match(/\\bsrc\\s*=\\s*[\"']?([^\"'\\s>]+)/i);\n    let src = srcMatch ? srcMatch[1] : '';\n    if (src.startsWith('//')) src = 'https:' + src;\n    out.push({ src, code: (m[2] || '').trim() });\n  }\n  return out;\n}\nconst gtmIdsIn = (scripts) => [...new Set(scripts.flatMap((s) => (s.src + ' ' + s.code).match(/\\bGTM-[A-Z0-9]{4,10}\\b/g) || []))];\nconst swRegistered = (scripts) => [...new Set(scripts.flatMap((s) => [...s.code.matchAll(/serviceWorker\\.register\\(\\s*[\"']([^\"']+)[\"']/g)].map((x) => x[1])))];\n// ---- end of shared parser ----\n\n// RULE-BASED DETECTION. No AI. A vendor counts as installed only when its loader is found in code that runs:\n// a <script> on the page or a tag inside the page's GTM container. Service worker files are extra evidence.\nconst sigs = $('Get signatures').all().map((i) => i.json).filter((s) => s.vendor);\nconst plans = $('Plan page requests').all().map((i) => i.json);\nconst pages = $('Fetch homepage').all().map((i) => i.json);\nconst jobs = $('Plan file checks').all().map((i) => i.json);\nconst files = $input.all().map((i) => i.json);\nconst bodyOf = (r) => (typeof r.data === 'string' ? r.data : typeof r.body === 'string' ? r.body : '');\nconst pageSigs = sigs.filter((s) => String(s.where_to_look).includes('script') || String(s.where_to_look).includes('gtm'));\nconst swSigs = sigs.filter((s) => String(s.where_to_look).includes('sw'));\n// GTM stores tag HTML as an escaped JavaScript string: \\u003c is <, \\/ is /, \\\" is \".\nconst unescapeGtm = (t) => String(t).replace(/\\\\u003c/gi, '<').replace(/\\\\u003e/gi, '>').replace(/\\\\u0026/gi, '&').replace(/\\\\\\//g, '/').replace(/\\\\\"/g, '\"');\nconst snippetAround = (text, needle) => {\n  const at = text.toLowerCase().indexOf(needle.toLowerCase());\n  if (at < 0) return '';\n  return text.slice(Math.max(0, at - 40), at + needle.length + 40).replace(/\\s+/g, ' ').trim();\n};\n// Checks one list of runnable scripts against the page signatures.\nfunction matchScripts(scripts, whereLabel, fileLabel) {\n  const found = [];\n  scripts.forEach((s) => {\n    const text = (s.src + '\\n' + s.code);\n    pageSigs.forEach((sig) => {\n      if (text.toLowerCase().includes(String(sig.pattern).toLowerCase())) {\n        found.push({ vendor: sig.vendor, is_ours: sig.is_ours === true, where: whereLabel, file: fileLabel,\n          fragment: s.src && s.src.toLowerCase().includes(String(sig.pattern).toLowerCase()) ? '<script src=\"' + s.src + '\">' : snippetAround(s.code, sig.pattern) });\n      }\n    });\n  });\n  return found;\n}\n\nreturn plans.map((p, i) => {\n  const page = pages[i] || {};\n  const status = Number(page.statusCode) || 0;\n  const evidence = [];\n  const swNotes = [];\n  if (status === 200) {\n    evidence.push(...matchScripts(parseScripts(bodyOf(page)), 'page script', 'homepage HTML'));\n    jobs.forEach((job, k) => {\n      if (job.site_id !== p.site_id) return;\n      const r = files[k] || {};\n      const ok = Number(r.statusCode) === 200;\n      if (job.kind === 'gtm') {\n        if (!ok) { swNotes.push('GTM container ' + job.file + ' not readable (HTTP ' + (r.statusCode || 'error') + ')'); return; }\n        evidence.push(...matchScripts(parseScripts(unescapeGtm(bodyOf(r))), 'GTM container', 'gtm.js?id=' + job.file));\n      }\n      if (job.kind === 'sw' && ok) {\n        const body = bodyOf(r);\n        swSigs.forEach((sig) => {\n          if (body.toLowerCase().includes(String(sig.pattern).toLowerCase())) {\n            evidence.push({ vendor: sig.vendor, is_ours: sig.is_ours === true, where: 'service worker', file: job.file, fragment: snippetAround(body, sig.pattern) });\n          }\n        });\n      }\n    });\n  }\n  // One evidence line per vendor + place + file is enough.\n  const seen = new Set();\n  const uniq = evidence.filter((e) => { const k = e.vendor + e.where + e.file; if (seen.has(k)) return false; seen.add(k); return true; });\n  const loaders = uniq.filter((e) => e.where !== 'service worker');\n  const oursFound = loaders.some((e) => e.is_ours);\n  const competitors = [...new Set(loaders.filter((e) => !e.is_ours).map((e) => e.vendor))].sort();\n  const oursSwOnly = !oursFound && uniq.some((e) => e.is_ours && e.where === 'service worker');\n  if (oursSwOnly) swNotes.push('our service worker file is still on the server, but no page loads our script');\n  // Evidence of absence: say exactly where we looked, so the CSM can check the same files by hand.\n  if (status === 200 && !oursFound) {\n    const ourPatterns = pageSigs.filter((s) => s.is_ours === true).map((s) => s.pattern).join(', ');\n    const looked = ['homepage HTML'].concat(jobs.filter((j) => j.site_id === p.site_id && j.kind === 'gtm').map((j) => 'gtm.js?id=' + j.file));\n    uniq.push({ vendor: 'ExamplePush (ours, fictional)', is_ours: true, where: 'not found', file: looked.join(' + '),\n      fragment: 'no runnable script containing ' + ourPatterns });\n  }\n  return { json: { run_id: p.run_id, scope: p.scope, day: p.day, site_id: p.site_id, client_name: p.client_name,\n    http_status: status, ours_found: oursFound, competitors, evidence: uniq, notes: swNotes } };\n});\n"
       },
-      "id": "c23a2cf0-fa10-4c09-96b0-97e3c3ce9078",
+      "id": "f36109cc-c57a-4cfd-b2c5-85048cdd0456",
       "name": "Detect integrations",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -252,7 +252,7 @@
         },
         "returnAll": true
       },
-      "id": "92a3d526-a595-4623-a5f8-4c08a368e0f9",
+      "id": "fc6272ed-6995-4004-9963-978baf2ba4dd",
       "name": "Get previous state",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -269,7 +269,7 @@
         "language": "javaScript",
         "jsCode": "// CHANGE RULE. A change only becomes an alert when two successful scans in a row show the same change.\n// Levels: urgent = our script is gone; high = a competitor's script appeared; info = the site cannot be checked.\nconst RULES = { confirmScans: 2, blockedStatuses: [401, 403, 429] };\nconst obs = $('Detect integrations').all().map((i) => i.json);\nconst ctx = $('Run context').first().json;\nconst prevRows = $input.all().map((i) => i.json).filter((r) => r.site_id && r.scope === ctx.scope);\nconst prevBy = Object.fromEntries(prevRows.map((r) => [r.site_id, r]));\nconst list = (v) => String(v || '').split('|').map((x) => x.trim()).filter(Boolean);\n\nreturn obs.map((o) => {\n  const prev = prevBy[o.site_id];\n  const st = prev ? { ours_confirmed: prev.ours_confirmed === true, competitors_confirmed: prev.competitors_confirmed || '',\n    pending_signal: prev.pending_signal || '', pending_count: Number(prev.pending_count) || 0 }\n    : null;\n  let result, level = '', alert = false, signal = '', note = '';\n  let next = st ? { ...st } : null;\n\n  if (RULES.blockedStatuses.includes(o.http_status)) {\n    result = 'cannot_check'; level = 'info';\n    note = 'The site blocks automated requests (HTTP ' + o.http_status + '). Not retried and not worked around; check by hand or ask the client.';\n  } else if (o.http_status !== 200) {\n    result = 'error_skipped';\n    note = 'HTTP ' + (o.http_status || 'no response') + ': day skipped, previous state and pending change kept.';\n  } else if (!st) {\n    result = 'baseline';\n    next = { ours_confirmed: o.ours_found, competitors_confirmed: o.competitors.join('|'), pending_signal: '', pending_count: 0 };\n    note = o.ours_found ? 'First scan: our script found.' : 'First scan: our script NOT found. Check the installation by hand.';\n  } else {\n    const parts = [];\n    if (st.ours_confirmed && !o.ours_found) parts.push('ours_missing');\n    o.competitors.filter((c) => !list(st.competitors_confirmed).includes(c)).forEach((c) => parts.push('competitor:' + c));\n    signal = parts.sort().join('|');\n    if (!signal) {\n      // Good news (our script back, a competitor gone) is accepted at once: it cannot cause a false alarm.\n      result = (o.ours_found !== st.ours_confirmed || o.competitors.join('|') !== st.competitors_confirmed) ? 'recovered' : 'no_change';\n      next = { ours_confirmed: o.ours_found, competitors_confirmed: o.competitors.join('|'), pending_signal: '', pending_count: 0 };\n    } else if (signal === st.pending_signal && st.pending_count + 1 >= RULES.confirmScans) {\n      result = 'alert'; alert = true;\n      level = signal.includes('ours_missing') ? 'urgent' : 'high';\n      next = { ours_confirmed: o.ours_found, competitors_confirmed: o.competitors.join('|'), pending_signal: '', pending_count: 0 };\n      note = 'Confirmed on ' + RULES.confirmScans + ' scans in a row.';\n    } else {\n      result = 'pending';\n      next = { ...st, pending_signal: signal, pending_count: 1 };\n      note = 'Change seen once. Waiting for the next scan to confirm.';\n    }\n  }\n  if (o.notes.length) note = (note ? note + ' ' : '') + 'Notes: ' + o.notes.join('; ') + '.';\n  const actual = alert ? level : result === 'cannot_check' ? 'cannot_check' : 'none';\n  return { json: {\n    run_id: o.run_id, scope: o.scope, day: o.day, site_id: o.site_id, client_name: o.client_name,\n    http_status: o.http_status, result, level, alert, actual, ours_found: o.ours_found,\n    competitors_found: o.competitors.join('|'), signal,\n    evidence: JSON.stringify(o.evidence), note,\n    keep_state: next === null ? false : true,\n    state_ours_confirmed: next ? next.ours_confirmed : false,\n    state_competitors_confirmed: next ? next.competitors_confirmed : '',\n    state_pending_signal: next ? next.pending_signal : '',\n    state_pending_count: next ? next.pending_count : 0,\n  } };\n});\n"
       },
-      "id": "25ef631e-250b-4d6c-bb1e-1f9da41f0406",
+      "id": "dbe9967f-c168-4aad-8ea6-fcea4ddaa65e",
       "name": "Compare with previous state",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -428,7 +428,7 @@
         },
         "options": {}
       },
-      "id": "7988d55b-bab2-4285-98b8-0a96163261aa",
+      "id": "8c108b33-7927-40de-a5af-bd738ba740a6",
       "name": "Save scan log",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -461,7 +461,7 @@
         },
         "options": {}
       },
-      "id": "16a16259-fde2-4dfc-8f38-7dfad23b5d2e",
+      "id": "299c441f-756b-40a1-804f-b769af6bb2dc",
       "name": "Has state to save",
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
@@ -585,7 +585,7 @@
         },
         "options": {}
       },
-      "id": "b9df9be1-8013-4a32-8be4-f4b2fc79c034",
+      "id": "4ce4cd00-abb1-4451-8d8f-37e616a4135e",
       "name": "Save state",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -618,7 +618,7 @@
         },
         "options": {}
       },
-      "id": "b42c6967-4de3-4461-ae80-6942e87b0c87",
+      "id": "e6db4f8a-bf8f-415d-9345-c9f7a6a7f491",
       "name": "Confirmed alerts only",
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
@@ -787,7 +787,7 @@
         },
         "options": {}
       },
-      "id": "5fdfe193-ddaa-44d5-875b-dd415b365bfe",
+      "id": "7d4a59eb-4e69-4bd8-97a0-132ef10af252",
       "name": "Save alert for drafting",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -802,7 +802,7 @@
         "language": "javaScript",
         "jsCode": "// Last step of every run: one summary line. The test workflow waits for this before scanning the next day.\nconst rows = $('Compare with previous state').all().map((i) => i.json);\nconst count = (r) => rows.filter((x) => x.result === r).length;\nreturn [{ json: { run_id: rows[0] && rows[0].run_id, scope: rows[0] && rows[0].scope, day: rows[0] && rows[0].day, sites: rows.length,\n  alerts: rows.filter((x) => x.alert).map((x) => x.site_id + ' ' + x.level + ' ' + x.signal),\n  pending: count('pending'), cannot_check: count('cannot_check'), errors_skipped: count('error_skipped') } }];\n"
       },
-      "id": "16422886-bc69-4e2e-934e-66b47b32190b",
+      "id": "c8052110-914c-4098-9415-66d27d205858",
       "name": "Run finished",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,

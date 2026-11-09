@@ -7,3 +7,5 @@ site_e,Bluestone Bikes,E our script replaced by a competitor (day 2),https://kub
 site_f,Maplecrest Pets,F bot protection returns 403 every day,https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_f,EP-1006,Demo CSM
 site_g,Quill & Ink Stationery,G one day of server error 500 (day 3),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_g,EP-1007,Demo CSM
 site_h,Saltmarsh Coffee,"H competitor named only in a blog post (day 2), not in a script",https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_h,EP-1008,Demo CSM
+site_i,Ridgeway Outdoor,I competitor appears for one day only (day 3),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_i,EP-1009,Demo CSM
+site_j,Lanternfield Tea,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),https://kubabiros595.app.n8n.cloud/webhook/sim-site?site=site_j,EP-1010,Demo CSM

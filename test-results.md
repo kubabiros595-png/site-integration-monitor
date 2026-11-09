@@ -15,6 +15,7 @@ A checkpoint has one of four expected answers: `none`, `high`, `urgent` or `cann
 | EVAL-20261109-203059 | 40 | 40 | 0 | 0 | |
 | EVAL-20261109-203712 | 40 | 40 | 0 | 0 | rerun before the draft tests |
 | EVAL-20261109-204030 | 40 | 40 | 0 | 0 | rerun after the second draft fix |
+| EVAL-20261109-230533 | 50 | 50 | 0 | 0 | added scenarios I and J, and the "not found" evidence line |
 
 Times are Europe/Warsaw. Per-checkpoint rows of the last run: `test-results.csv`.
 
@@ -32,6 +33,11 @@ Times are Europe/Warsaw. Per-checkpoint rows of the last run: `test-results.csv`
 
 Site F returned 403 every day and was marked "cannot check" each day without an alert. Site G returned 500 on day 3; that day was skipped and its state kept. Site H mentioned OneSignal and Pushwoosh in a blog post, a `<code>` block, a link and JSON-LD; none of it counted.
 
+Added later (run `EVAL-20261109-230533`):
+- **Site I** had a Webpushr script for one day only (day 3). Day 3 was "pending", day 4 the script was gone, the pending change was dropped and no alert went out. This is the case the 2-scan rule exists for.
+- **Site J** loads our script through an inline loader (`document.createElement("script")`), with no `<script src>` for it, and from day 2 has an old iZooto tag inside an HTML comment. Our script was found every day and the commented-out tag never counted.
+- Alerts about our missing script now include a "not found" evidence line saying which files were searched and for which pattern.
+
 ## Draft test (`SIM Draft Eval`)
 
 Two parts:
@@ -44,6 +50,7 @@ Two parts:
 | on EVAL-20261109-203059 | 4 | 4 of 4 | 10 of 10 | my own reading found 2 bad emails |
 | on EVAL-20261109-203712 | 4 | 4 of 4 | 12 of 12 | my own reading found 2 bad subjects |
 | on EVAL-20261109-204030 | 4 | 4 of 4 | 13 of 13 | my own reading found no problems |
+| on EVAL-20261109-230533 | 4 | not run | not run | n8n trial execution limit reached |
 
 **Fix 1.** The code checks passed, but two technical-help emails thanked the client "for reaching out" and apologised, as if the client had reported the problem. Added: a prompt rule, a check for thanks-for-contacting and apologies, a check that a technical-help email says "it looks like" or "may have", and checker cases K11 and K12.
 

@@ -3,7 +3,7 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "240f822b-8f81-4220-a950-9ad129af8e4f",
+      "id": "68f513f6-4281-4fc0-8644-ae44be7095b9",
       "name": "Run all tests",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
@@ -32,7 +32,7 @@
           ]
         }
       },
-      "id": "f3a8a9ab-6491-406c-a6da-279375734815",
+      "id": "1d243e66-7adb-4ce7-9d26-b4d86a5c9157",
       "name": "Clear eval state",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -49,7 +49,7 @@
         "language": "javaScript",
         "jsCode": "// One test run = the scanner called 5 times in a row, once per simulated day, in the separate \"eval\" scope.\n// The eval scope has its own state rows, so tests never touch the live state.\nconst runId = 'EVAL-' + $now.setZone('Europe/Warsaw').toFormat('yyyyMMdd-HHmmss');\nreturn [1, 2, 3, 4, 5].map((day) => ({ json: { scope: 'eval', day, run_id: runId } }));\n"
       },
-      "id": "924e028f-2b66-4960-9d10-f34fc72f1280",
+      "id": "7d617b85-262a-4a18-9c2b-542d43c720fd",
       "name": "Days 1 to 5",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -64,7 +64,7 @@
         "batchSize": 1,
         "options": {}
       },
-      "id": "1b117afc-f987-4203-99e0-de2cc5d4313d",
+      "id": "92048ec5-eb82-41ab-97e2-5b4f0c7fda05",
       "name": "One day at a time",
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
@@ -87,7 +87,7 @@
           "waitForSubWorkflow": true
         }
       },
-      "id": "b0d83dd0-7a04-4a7e-88de-7d55efbd1175",
+      "id": "f7263266-de91-4fef-8115-511f40782879",
       "name": "Scan one simulated day",
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.4,
@@ -118,7 +118,7 @@
         },
         "returnAll": true
       },
-      "id": "c42496e8-8282-4e24-8683-4f21875ed51d",
+      "id": "52b72a94-b178-4ceb-950e-9fdb6ef0005c",
       "name": "Scan log of this run",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -141,7 +141,7 @@
         },
         "returnAll": true
       },
-      "id": "4093a059-ea1c-4fc7-9072-efe493790f1a",
+      "id": "1f881967-92b1-44b7-810d-46a4aa44053a",
       "name": "Expected results",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -155,9 +155,9 @@
       "parameters": {
         "mode": "runOnceForAllItems",
         "language": "javaScript",
-        "jsCode": "// 40 checkpoints (8 sites x 5 days). Expected answers were written before the first run (SIM Eval Cases).\n// missed = an alert was expected but none came; false alarm = an alert came when none was expected.\nconst runId = $('Days 1 to 5').first().json.run_id;\nconst log = $('Scan log of this run').all().map((i) => i.json).filter((r) => r.run_id === runId);\nconst cases = $input.all().map((i) => i.json).filter((c) => c.case_id);\nconst runAt = $now.setZone('Europe/Warsaw').toFormat('yyyy-MM-dd HH:mm');\nconst actualOf = (r) => (r.alert ? r.level : r.result === 'cannot_check' ? 'cannot_check' : 'none');\nconst isAlert = (v) => v === 'urgent' || v === 'high';\nreturn cases.sort((a, b) => a.case_id.localeCompare(b.case_id)).map((c) => {\n  const rows = log.filter((r) => r.site_id === c.site_id && Number(r.day) === Number(c.day));\n  const actual = rows.length === 1 ? actualOf(rows[0]) : rows.length === 0 ? 'no scan row' : rows.length + ' scan rows';\n  let outcome = 'ok';\n  if (actual !== c.expected) {\n    if (isAlert(c.expected) && !isAlert(actual)) outcome = 'missed';\n    else if (!isAlert(c.expected) && isAlert(actual)) outcome = 'false alarm';\n    else outcome = 'wrong result';\n  }\n  const r = rows[0] || {};\n  return { json: { run_id: runId, run_at: runAt, suite: 'detection', case_id: c.case_id, site_id: c.site_id, day: Number(c.day),\n    expected: c.expected, actual, passed: outcome === 'ok', outcome,\n    detail: [r.result, r.signal, r.note].filter(Boolean).join(' | ').slice(0, 400) } };\n});\n"
+        "jsCode": "// 50 checkpoints (10 sites x 5 days). Expected answers were written before each scenario's first run (SIM Eval Cases).\n// missed = an alert was expected but none came; false alarm = an alert came when none was expected.\nconst runId = $('Days 1 to 5').first().json.run_id;\nconst log = $('Scan log of this run').all().map((i) => i.json).filter((r) => r.run_id === runId);\nconst cases = $input.all().map((i) => i.json).filter((c) => c.case_id);\nconst runAt = $now.setZone('Europe/Warsaw').toFormat('yyyy-MM-dd HH:mm');\nconst actualOf = (r) => (r.alert ? r.level : r.result === 'cannot_check' ? 'cannot_check' : 'none');\nconst isAlert = (v) => v === 'urgent' || v === 'high';\nreturn cases.sort((a, b) => a.case_id.localeCompare(b.case_id)).map((c) => {\n  const rows = log.filter((r) => r.site_id === c.site_id && Number(r.day) === Number(c.day));\n  const actual = rows.length === 1 ? actualOf(rows[0]) : rows.length === 0 ? 'no scan row' : rows.length + ' scan rows';\n  let outcome = 'ok';\n  if (actual !== c.expected) {\n    if (isAlert(c.expected) && !isAlert(actual)) outcome = 'missed';\n    else if (!isAlert(c.expected) && isAlert(actual)) outcome = 'false alarm';\n    else outcome = 'wrong result';\n  }\n  const r = rows[0] || {};\n  return { json: { run_id: runId, run_at: runAt, suite: 'detection', case_id: c.case_id, site_id: c.site_id, day: Number(c.day),\n    expected: c.expected, actual, passed: outcome === 'ok', outcome,\n    detail: [r.result, r.signal, r.note].filter(Boolean).join(' | ').slice(0, 400) } };\n});\n"
       },
-      "id": "d9f72959-28a9-4628-8d36-636d23cbebdc",
+      "id": "5b711ac7-7619-4ab8-bbfc-319075424cf6",
       "name": "Compare expected vs actual",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -296,7 +296,7 @@
         },
         "options": {}
       },
-      "id": "0beef31e-7339-4431-8bc8-efb37d5f49d1",
+      "id": "08e9c894-7301-4987-a5f9-63a9fc3503ac",
       "name": "Save test results",
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
@@ -311,7 +311,7 @@
         "language": "javaScript",
         "jsCode": "const rows = $('Compare expected vs actual').all().map((i) => i.json);\nconst count = (o) => rows.filter((r) => r.outcome === o).length;\nreturn [{ json: { run_id: rows[0] && rows[0].run_id, checkpoints: rows.length, passed: rows.filter((r) => r.passed).length,\n  missed: count('missed'), false_alarms: count('false alarm'), wrong_result: count('wrong result'),\n  failures: rows.filter((r) => !r.passed).map((r) => r.case_id + ': expected ' + r.expected + ', got ' + r.actual + ' (' + r.detail + ')') } }];\n"
       },
-      "id": "0839e064-72f4-481b-a9d0-4dcab42d5580",
+      "id": "2b0bd589-811a-4d29-b9fb-5b0201e2d956",
       "name": "Summary",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,

@@ -39,3 +39,13 @@ H2,site_h,"H competitor named only in a blog post (day 2), not in a script",2,no
 H3,site_h,"H competitor named only in a blog post (day 2), not in a script",3,none,no change
 H4,site_h,"H competitor named only in a blog post (day 2), not in a script",4,none,no change
 H5,site_h,"H competitor named only in a blog post (day 2), not in a script",5,none,no change
+I1,site_i,I competitor appears for one day only (day 3),1,none,baseline
+I2,site_i,I competitor appears for one day only (day 3),2,none,no change
+I3,site_i,I competitor appears for one day only (day 3),3,none,"competitor seen once (one-day test), wait"
+I4,site_i,I competitor appears for one day only (day 3),4,none,"competitor gone again: pending dropped, no alert"
+I5,site_i,I competitor appears for one day only (day 3),5,none,no change
+J1,site_j,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),1,none,"baseline: our script loaded by an inline loader, not a <script src>"
+J2,site_j,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),2,none,old competitor tag only inside an HTML comment: ignore
+J3,site_j,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),3,none,no change
+J4,site_j,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),4,none,no change
+J5,site_j,J our script loaded by an inline loader; old competitor tag in an HTML comment (day 2),5,none,no change

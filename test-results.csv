@@ -1,41 +1,51 @@
 run_id,run_at,suite,case_id,site_id,day,expected,actual,passed,outcome,detail
-EVAL-20261109-204030,2026-11-09 20:41,detection,A1,site_a,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,A2,site_a,2,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,A3,site_a,3,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,A4,site_a,4,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,A5,site_a,5,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,B1,site_b,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,B2,site_b,2,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,B3,site_b,3,none,none,true,ok,pending | competitor:PushEngage | Change seen once. Waiting for the next scan to confirm.
-EVAL-20261109-204030,2026-11-09 20:41,detection,B4,site_b,4,high,high,true,ok,alert | competitor:PushEngage | Confirmed on 2 scans in a row.
-EVAL-20261109-204030,2026-11-09 20:41,detection,B5,site_b,5,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,C1,site_c,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,C2,site_c,2,none,none,true,ok,pending | competitor:OneSignal | Change seen once. Waiting for the next scan to confirm.
-EVAL-20261109-204030,2026-11-09 20:41,detection,C3,site_c,3,high,high,true,ok,alert | competitor:OneSignal | Confirmed on 2 scans in a row.
-EVAL-20261109-204030,2026-11-09 20:41,detection,C4,site_c,4,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,C5,site_c,5,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,D1,site_d,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,D2,site_d,2,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,D3,site_d,3,none,none,true,ok,"pending | ours_missing | Change seen once. Waiting for the next scan to confirm. Notes: our service worker file is still on the server, but no page loads our script."
-EVAL-20261109-204030,2026-11-09 20:41,detection,D4,site_d,4,urgent,urgent,true,ok,"alert | ours_missing | Confirmed on 2 scans in a row. Notes: our service worker file is still on the server, but no page loads our script."
-EVAL-20261109-204030,2026-11-09 20:41,detection,D5,site_d,5,none,none,true,ok,"no_change | Notes: our service worker file is still on the server, but no page loads our script."
-EVAL-20261109-204030,2026-11-09 20:41,detection,E1,site_e,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,E2,site_e,2,none,none,true,ok,pending | competitor:Pushwoosh|ours_missing | Change seen once. Waiting for the next scan to confirm.
-EVAL-20261109-204030,2026-11-09 20:41,detection,E3,site_e,3,urgent,urgent,true,ok,alert | competitor:Pushwoosh|ours_missing | Confirmed on 2 scans in a row.
-EVAL-20261109-204030,2026-11-09 20:41,detection,E4,site_e,4,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,E5,site_e,5,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,F1,site_f,1,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
-EVAL-20261109-204030,2026-11-09 20:41,detection,F2,site_f,2,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
-EVAL-20261109-204030,2026-11-09 20:41,detection,F3,site_f,3,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
-EVAL-20261109-204030,2026-11-09 20:41,detection,F4,site_f,4,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
-EVAL-20261109-204030,2026-11-09 20:41,detection,F5,site_f,5,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
-EVAL-20261109-204030,2026-11-09 20:41,detection,G1,site_g,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,G2,site_g,2,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,G3,site_g,3,none,none,true,ok,"error_skipped | HTTP 500: day skipped, previous state and pending change kept."
-EVAL-20261109-204030,2026-11-09 20:41,detection,G4,site_g,4,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,G5,site_g,5,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,H1,site_h,1,none,none,true,ok,baseline | First scan: our script found.
-EVAL-20261109-204030,2026-11-09 20:41,detection,H2,site_h,2,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,H3,site_h,3,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,H4,site_h,4,none,none,true,ok,no_change
-EVAL-20261109-204030,2026-11-09 20:41,detection,H5,site_h,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,A1,site_a,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,A2,site_a,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,A3,site_a,3,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,A4,site_a,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,A5,site_a,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,B1,site_b,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,B2,site_b,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,B3,site_b,3,none,none,true,ok,pending | competitor:PushEngage | Change seen once. Waiting for the next scan to confirm.
+EVAL-20261109-230533,2026-11-09 23:06,detection,B4,site_b,4,high,high,true,ok,alert | competitor:PushEngage | Confirmed on 2 scans in a row.
+EVAL-20261109-230533,2026-11-09 23:06,detection,B5,site_b,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,C1,site_c,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,C2,site_c,2,none,none,true,ok,pending | competitor:OneSignal | Change seen once. Waiting for the next scan to confirm.
+EVAL-20261109-230533,2026-11-09 23:06,detection,C3,site_c,3,high,high,true,ok,alert | competitor:OneSignal | Confirmed on 2 scans in a row.
+EVAL-20261109-230533,2026-11-09 23:06,detection,C4,site_c,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,C5,site_c,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,D1,site_d,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,D2,site_d,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,D3,site_d,3,none,none,true,ok,"pending | ours_missing | Change seen once. Waiting for the next scan to confirm. Notes: our service worker file is still on the server, but no page loads our script."
+EVAL-20261109-230533,2026-11-09 23:06,detection,D4,site_d,4,urgent,urgent,true,ok,"alert | ours_missing | Confirmed on 2 scans in a row. Notes: our service worker file is still on the server, but no page loads our script."
+EVAL-20261109-230533,2026-11-09 23:06,detection,D5,site_d,5,none,none,true,ok,"no_change | Notes: our service worker file is still on the server, but no page loads our script."
+EVAL-20261109-230533,2026-11-09 23:06,detection,E1,site_e,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,E2,site_e,2,none,none,true,ok,pending | competitor:Pushwoosh|ours_missing | Change seen once. Waiting for the next scan to confirm.
+EVAL-20261109-230533,2026-11-09 23:06,detection,E3,site_e,3,urgent,urgent,true,ok,alert | competitor:Pushwoosh|ours_missing | Confirmed on 2 scans in a row.
+EVAL-20261109-230533,2026-11-09 23:06,detection,E4,site_e,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,E5,site_e,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,F1,site_f,1,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
+EVAL-20261109-230533,2026-11-09 23:06,detection,F2,site_f,2,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
+EVAL-20261109-230533,2026-11-09 23:06,detection,F3,site_f,3,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
+EVAL-20261109-230533,2026-11-09 23:06,detection,F4,site_f,4,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
+EVAL-20261109-230533,2026-11-09 23:06,detection,F5,site_f,5,cannot_check,cannot_check,true,ok,cannot_check | The site blocks automated requests (HTTP 403). Not retried and not worked around; check by hand or ask the client.
+EVAL-20261109-230533,2026-11-09 23:06,detection,G1,site_g,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,G2,site_g,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,G3,site_g,3,none,none,true,ok,"error_skipped | HTTP 500: day skipped, previous state and pending change kept."
+EVAL-20261109-230533,2026-11-09 23:06,detection,G4,site_g,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,G5,site_g,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,H1,site_h,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,H2,site_h,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,H3,site_h,3,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,H4,site_h,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,H5,site_h,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,I1,site_i,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,I2,site_i,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,I3,site_i,3,none,none,true,ok,pending | competitor:Webpushr | Change seen once. Waiting for the next scan to confirm.
+EVAL-20261109-230533,2026-11-09 23:06,detection,I4,site_i,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,I5,site_i,5,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,J1,site_j,1,none,none,true,ok,baseline | First scan: our script found.
+EVAL-20261109-230533,2026-11-09 23:06,detection,J2,site_j,2,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,J3,site_j,3,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,J4,site_j,4,none,none,true,ok,no_change
+EVAL-20261109-230533,2026-11-09 23:06,detection,J5,site_j,5,none,none,true,ok,no_change

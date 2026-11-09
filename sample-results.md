@@ -27,6 +27,17 @@ Evidence:
 Next step: Review the evidence and the client email draft before anything is sent.
 ```
 
+## Evidence of absence (added later)
+
+When our script is missing, the stored evidence now also says where the scanner looked. Scenario D, day 4, as saved by the scanner (no AI involved):
+
+```
+ExamplePush (ours, fictional) | service worker | /examplepush-sw.js | importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');
+ExamplePush (ours, fictional) | not found      | homepage HTML      | no runnable script containing cdn.examplepush.example/sdk/
+```
+
+The first line explains why a quick look at the server might mislead: the old service worker file is still there. The second line is the actual finding.
+
 ## Client email, urgent alert: before and after
 
 ### Run 1 (passed the code checks, failed my reading)

@@ -2,7 +2,7 @@
 
 A portfolio project using fictional client sites. Once a day it reads the public code of each client's website and checks whether our (fictional) web push script is still installed and whether a competitor's push script has appeared. A confirmed change becomes an alert for the Customer Success Manager, with the exact file and code fragment as evidence, plus an email draft that waits for a person to approve it. It does not contact anyone.
 
-**Built and tested, not deployed.** Everything runs against eight invented shops served by an n8n webhook. It has not been used with real clients.
+**Built and tested, not deployed.** Everything runs against ten invented shops served by an n8n webhook. It has not been used with real clients.
 
 ## Problem
 
@@ -30,7 +30,7 @@ flowchart LR
 1. **Fetch.** One request per client homepage, once a day, with an honest user agent. Public pages only.
 2. **Read scripts.** Only `<script>` tags the browser would run count. Text, links, `<code>` blocks, HTML comments and data blocks like `application/ld+json` are ignored.
 3. **Look deeper.** If the page loads Google Tag Manager, the scanner fetches the container and reads the tags inside it (GTM stores tag HTML escaped, so it is unescaped first). It also fetches the standard service worker paths of each vendor plus any path the page registers.
-4. **Match.** A signature table lists vendor, pattern and where to look. A vendor counts as installed only when its loader runs on the page or through GTM. A service worker file alone is extra evidence, not proof.
+4. **Match.** A signature table lists vendor, pattern and where to look. A vendor counts as installed only when its loader runs on the page or through GTM, either as `<script src>` or inside an inline loader. A service worker file alone is extra evidence, not proof. When our script is missing, the alert says exactly which files were searched and for which pattern, so the CSM can repeat the check by hand.
 5. **Compare.** Today's result is compared with the confirmed state. A change becomes an alert only when two successful scans in a row show the same change. Levels: **urgent** (our script is gone), **high** (a competitor appeared), **info** (the site cannot be checked).
 6. **Draft.** Detection is pure rules. Claude only writes words: an internal alert with the evidence, and a client email. The email prompt never sees the evidence, the vendor names or the client name.
 7. **Check.** Code checks every draft before a person sees it.
@@ -52,7 +52,7 @@ Full rows with links: `signatures.csv`.
 
 ## Test scenarios
 
-Eight fictional shops, each with five simulated days. The pages, GTM containers and service worker files are stored in a data table and served by the `SIM Mock Sites` webhook.
+Ten fictional shops, each with five simulated days. The pages, GTM containers and service worker files are stored in a data table and served by the `SIM Mock Sites` webhook.
 
 | | Scenario | What it tests | Expected |
 | --- | --- | --- | --- |
@@ -64,20 +64,26 @@ Eight fictional shops, each with five simulated days. The pages, GTM containers 
 | F | Bot protection returns 403 every day | No workaround, no false alarm | cannot check, no alert |
 | G | One day of server error 500 (day 3) | Errors do not count as a change | no alert |
 | H | Competitor named in a blog post and JSON-LD (day 2) | False-alarm trap | no alert |
+| I | Competitor script on the page for one day only (day 3) | The 2-scan rule filters a one-day test | no alert |
+| J | Our script loaded by an inline loader; old competitor tag inside an HTML comment (day 2) | Inline loaders count, commented-out code does not | no alert |
 
 ## Test results
 
 | Test | Result |
 | --- | --- |
-| Detection: 40 checkpoints (8 sites × 5 days) | **40 of 40** correct |
+| Detection: 50 checkpoints (10 sites × 5 days) | **50 of 50** correct |
 | Missed alerts | **0** |
 | False alarms | **0** |
-| AI drafts checked by code (4 alerts, CSM alert + client email each) | 4 of 4 pass, after two fixes found by reading the drafts |
+| AI drafts checked by code (4 alerts, CSM alert + client email each) | 4 of 4 pass, after two fixes found by reading the drafts (last run on the 8-site version, see below) |
 | Draft checker on 13 hand-written emails (11 bad, 2 good) | **13 of 13** judged correctly |
 
-The detection test passed 40 of 40 in three separate runs (`EVAL-20261109-203059`, `-203712`, `-204030`); the last one is in `test-results.csv`. Draft checks are in `draft-test-results.csv`. Method and details: `test-results.md`. Example drafts: `sample-results.md`.
+With the first 8 scenarios the detection test passed 40 of 40 in three separate runs (`EVAL-20261109-203059`, `-203712`, `-204030`). After adding scenarios I and J it passed 50 of 50 (`EVAL-20261109-230533`, in `test-results.csv`). Draft checks are in `draft-test-results.csv`. Method and details: `test-results.md`. Example drafts: `sample-results.md`.
 
-These are tests on fictional pages, and I wrote the expected answers before the first run. They show the rules behave as designed on these eight scenarios, not that the monitor would catch every real installation.
+These are tests on fictional pages, and I wrote the expected answers before the first run. They show the rules behave as designed on these ten scenarios, not that the monitor would catch every real installation.
+
+## Last change, not fully re-tested
+
+After the draft tests I added the "not found" evidence line to alerts about our missing script, plus scenarios I and J. The detection test passed 50 of 50 with these changes, and the stored alerts for D and E contain the new line. Then the n8n trial hit its execution limit, so the draft test (`SIM Draft Eval`) was not run again on these alerts. The drafts in this repo come from run `EVAL-20261109-204030`, before this change. The draft code itself did not change.
 
 ## What did not pass the first time
 
@@ -105,18 +111,18 @@ These are tests on fictional pages, and I wrote the expected answers before the 
 
 ## My role
 
-I built this project with AI assistance. I defined the problem, the eight scenarios and the expected answer for every checkpoint before the first run, the 2-scan rule and the alert levels, the rule that client emails never mention monitoring or competitors, and the ethics limits. I read the drafts and decided on the fixes.
+I built this project with AI assistance. I defined the problem, the ten scenarios and the expected answer for every checkpoint before the first run, the 2-scan rule and the alert levels, the rule that client emails never mention monitoring or competitors, and the ethics limits. I read the drafts and decided on the fixes.
 
 ## Files
 
 - `Site Integration Monitor.json`: the scanner
 - `SIM Mock Sites.json`: the fictional sites (webhook) and the page generator
 - `SIM Drafts.json`: AI drafts and code checks
-- `SIM Eval.json`: detection test, 40 checkpoints
+- `SIM Eval.json`: detection test, 50 checkpoints
 - `SIM Draft Eval.json`: draft test and checker test
 - `signatures.csv`: signature table with sources
-- `demo_clients.csv`: 8 fictional clients
-- `mock_pages.csv`: 40 stored pages (8 sites × 5 days) with GTM containers and service worker files
+- `demo_clients.csv`: 10 fictional clients
+- `mock_pages.csv`: 50 stored pages (10 sites × 5 days) with GTM containers and service worker files
 - `eval_cases.csv`: expected result for each checkpoint
 - `test-results.csv`, `draft-test-results.csv`: test results
 - `test-results.md`: test method and results

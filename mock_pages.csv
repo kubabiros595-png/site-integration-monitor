@@ -608,3 +608,163 @@ You can read more on <a href=""https://onesignal.com"">their website</a>. We are
 <script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1008"" async></script>
 <script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1008""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
 </body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_i,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Ridgeway Outdoor</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1009""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1009"");</script>
+</head><body>
+<header><a href=""/"">Ridgeway Outdoor</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Gear for weekend hikers</h1>
+<section class=""products""><article><h2>Trail pack 28 l</h2><p>Light and waterproof.</p></article><article><h2>Merino socks</h2><p>Two-pack.</p></article></section>
+</main>
+<footer>&copy; 2026 Ridgeway Outdoor. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1009"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1009""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_i,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Ridgeway Outdoor</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1009""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1009"");</script>
+</head><body>
+<header><a href=""/"">Ridgeway Outdoor</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Gear for weekend hikers</h1>
+<section class=""products""><article><h2>Trail pack 28 l</h2><p>Light and waterproof.</p></article><article><h2>Merino socks</h2><p>Two-pack.</p></article></section>
+</main>
+<footer>&copy; 2026 Ridgeway Outdoor. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1009"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1009""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_i,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Ridgeway Outdoor</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1009""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1009"");</script>
+</head><body>
+<header><a href=""/"">Ridgeway Outdoor</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Gear for weekend hikers</h1>
+<section class=""products""><article><h2>Trail pack 28 l</h2><p>Light and waterproof.</p></article><article><h2>Merino socks</h2><p>Two-pack.</p></article></section>
+</main>
+<footer>&copy; 2026 Ridgeway Outdoor. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1009"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1009""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+<script>(function(w,d,s,id){if(typeof(w.webpushr)!=='undefined')return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js,fjs=d.getElementsByTagName(s)[0];js=d.createElement(s);js.id=id;js.async=1;js.src=""https://cdn.webpushr.com/app.min.js"";fjs.parentNode.appendChild(js);}(window,document,'script','webpushr-jssdk'));</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_i,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Ridgeway Outdoor</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1009""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1009"");</script>
+</head><body>
+<header><a href=""/"">Ridgeway Outdoor</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Gear for weekend hikers</h1>
+<section class=""products""><article><h2>Trail pack 28 l</h2><p>Light and waterproof.</p></article><article><h2>Merino socks</h2><p>Two-pack.</p></article></section>
+</main>
+<footer>&copy; 2026 Ridgeway Outdoor. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1009"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1009""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_i,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Ridgeway Outdoor</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1009""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1009"");</script>
+</head><body>
+<header><a href=""/"">Ridgeway Outdoor</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Gear for weekend hikers</h1>
+<section class=""products""><article><h2>Trail pack 28 l</h2><p>Light and waterproof.</p></article><article><h2>Merino socks</h2><p>Two-pack.</p></article></section>
+</main>
+<footer>&copy; 2026 Ridgeway Outdoor. A fictional shop used for testing.</footer>
+<script src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"" data-app-id=""EP-1009"" async></script>
+<script>window.ExamplePush=window.ExamplePush||[];ExamplePush.push([""init"",{appId:""EP-1009""}]);if(""serviceWorker"" in navigator){navigator.serviceWorker.register(""/examplepush-sw.js"");}</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_j,1,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Lanternfield Tea</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1010""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1010"");</script>
+</head><body>
+<header><a href=""/"">Lanternfield Tea</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Loose-leaf tea from small estates</h1>
+<section class=""products""><article><h2>First flush</h2><p>Bright and floral.</p></article><article><h2>Glass teapot</h2><p>Holds 600 ml.</p></article></section>
+</main>
+<footer>&copy; 2026 Lanternfield Tea. A fictional shop used for testing.</footer>
+<script>(function(){var s=document.createElement(""script"");s.async=true;s.src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"";s.setAttribute(""data-app-id"",""EP-1010"");document.head.appendChild(s);})();</script>
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_j,2,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Lanternfield Tea</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1010""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1010"");</script>
+</head><body>
+<header><a href=""/"">Lanternfield Tea</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Loose-leaf tea from small estates</h1>
+<section class=""products""><article><h2>First flush</h2><p>Bright and floral.</p></article><article><h2>Glass teapot</h2><p>Holds 600 ml.</p></article></section>
+</main>
+<footer>&copy; 2026 Lanternfield Tea. A fictional shop used for testing.</footer>
+<script>(function(){var s=document.createElement(""script"");s.async=true;s.src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"";s.setAttribute(""data-app-id"",""EP-1010"");document.head.appendChild(s);})();</script>
+<!-- old push tool, switched off in 2025: <script src=""https://cdn.izooto.com/scripts/0a1b2c3d4e5f.js""></script> -->
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_j,3,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Lanternfield Tea</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1010""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1010"");</script>
+</head><body>
+<header><a href=""/"">Lanternfield Tea</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Loose-leaf tea from small estates</h1>
+<section class=""products""><article><h2>First flush</h2><p>Bright and floral.</p></article><article><h2>Glass teapot</h2><p>Holds 600 ml.</p></article></section>
+</main>
+<footer>&copy; 2026 Lanternfield Tea. A fictional shop used for testing.</footer>
+<script>(function(){var s=document.createElement(""script"");s.async=true;s.src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"";s.setAttribute(""data-app-id"",""EP-1010"");document.head.appendChild(s);})();</script>
+<!-- old push tool, switched off in 2025: <script src=""https://cdn.izooto.com/scripts/0a1b2c3d4e5f.js""></script> -->
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_j,4,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Lanternfield Tea</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1010""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1010"");</script>
+</head><body>
+<header><a href=""/"">Lanternfield Tea</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Loose-leaf tea from small estates</h1>
+<section class=""products""><article><h2>First flush</h2><p>Bright and floral.</p></article><article><h2>Glass teapot</h2><p>Holds 600 ml.</p></article></section>
+</main>
+<footer>&copy; 2026 Lanternfield Tea. A fictional shop used for testing.</footer>
+<script>(function(){var s=document.createElement(""script"");s.async=true;s.src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"";s.setAttribute(""data-app-id"",""EP-1010"");document.head.appendChild(s);})();</script>
+<!-- old push tool, switched off in 2025: <script src=""https://cdn.izooto.com/scripts/0a1b2c3d4e5f.js""></script> -->
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"
+site_j,5,200,"<!doctype html>
+<html lang=""en""><head><meta charset=""utf-8""><title>Lanternfield Tea</title>
+<meta name=""viewport"" content=""width=device-width, initial-scale=1"">
+<link rel=""stylesheet"" href=""/assets/site.css"">
+<script async src=""https://www.googletagmanager.com/gtag/js?id=G-DEMO1010""></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(""js"",new Date());gtag(""config"",""G-DEMO1010"");</script>
+</head><body>
+<header><a href=""/"">Lanternfield Tea</a><nav><a href=""/shop"">Shop</a> <a href=""/blog"">Blog</a> <a href=""/contact"">Contact</a></nav></header>
+<main>
+<h1>Loose-leaf tea from small estates</h1>
+<section class=""products""><article><h2>First flush</h2><p>Bright and floral.</p></article><article><h2>Glass teapot</h2><p>Holds 600 ml.</p></article></section>
+</main>
+<footer>&copy; 2026 Lanternfield Tea. A fictional shop used for testing.</footer>
+<script>(function(){var s=document.createElement(""script"");s.async=true;s.src=""https://cdn.examplepush.example/sdk/v2/examplepush.js"";s.setAttribute(""data-app-id"",""EP-1010"");document.head.appendChild(s);})();</script>
+<!-- old push tool, switched off in 2025: <script src=""https://cdn.izooto.com/scripts/0a1b2c3d4e5f.js""></script> -->
+</body></html>",,,"{""/examplepush-sw.js"":""importScripts('https://cdn.examplepush.example/sdk/v2/sw.js');\n""}"

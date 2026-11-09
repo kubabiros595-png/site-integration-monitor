@@ -6,10 +6,10 @@ Projekt na fikcyjnych danych. Fikcyjna firma „ExamplePush” robi powiadomieni
 
 | Workflow | Co robi |
 | --- | --- |
-| SIM Mock Sites | Udaje 8 stron klientów. Każda ma 5 wersji (dni 1–5), kontener GTM i pliki service workera. Odpowiada jak prawdziwy serwer: 200, 403 albo 500. |
+| SIM Mock Sites | Udaje 10 stron klientów. Każda ma 5 wersji (dni 1–5), kontener GTM i pliki service workera. Odpowiada jak prawdziwy serwer: 200, 403 albo 500. |
 | Site Integration Monitor | Skaner. Pobiera stronę, szuka skryptów, pobiera kontener GTM i service workery, porównuje z tabelą sygnatur i z wczoraj. |
 | SIM Drafts | Dla potwierdzonego alertu Claude pisze dwa szkice: alert dla CSM-a z dowodem i maila do klienta. Kod sprawdza oba. Nic nie jest wysyłane. |
-| SIM Eval | Test: puszcza skaner przez dni 1–5 i porównuje 40 wyników z odpowiedziami, które spisałem przed testem. |
+| SIM Eval | Test: puszcza skaner przez dni 1–5 i porównuje 50 wyników z odpowiedziami, które spisałem przed testem. |
 | SIM Draft Eval | Test szkiców: każdy szkic musi przejść kontrolę kodem, a sama kontrola musi dobrze ocenić 13 maili, które napisałem ręcznie (11 złych, 2 dobre). |
 
 ## Czym jest service worker
@@ -44,6 +44,19 @@ Gdybym napisał „widzimy, że dodaliście OneSignal”, klient poczuje się ś
 
 Tylko `<script>`, który przeglądarka naprawdę wykona. Pomijam tekst, linki, bloki `<code>`, komentarze HTML i bloki danych typu `<script type="application/ld+json">`. Scenariusz H to sprawdza: wpis na blogu wymienia OneSignal, w tekście i w danych JSON-LD jest nawet pełny adres skryptu OneSignal. Zwykłe szukanie słowa w całym HTML dałoby tu fałszywy alarm.
 
+## Dwa dodatkowe scenariusze (I i J)
+
+- **I: konkurencja tylko na jeden dzień.** Agencja klienta wrzuciła na próbę skrypt Webpushr na jeden dzień i go zdjęła. Skaner zobaczył go raz („pending”), następnego dnia skryptu już nie było, więc nic nie poszło do CSM-a. To jest dokładnie ten przypadek, dla którego są dwa skany z rzędu.
+- **J: nasz skrypt ładowany „inaczej” i stary skrypt w komentarzu.** Nasz skrypt nie jest wpisany jako `<script src=...>`, tylko dokładany przez mały kawałek kodu (tzw. loader). Skaner i tak go znajduje, bo czyta też kod w środku tagów `<script>`. Do tego w kodzie strony jest stary skrypt iZooto, ale zakomentowany (`<!-- ... -->`), czyli przeglądarka go nie uruchamia. Skaner go ignoruje i nie ma fałszywego alarmu.
+
+## Dowód braku
+
+Kiedy nasz skrypt znika, trudno pokazać „dowód”, bo dowodem jest to, czego nie ma. Dlatego alert ma teraz osobną linijkę „not found”: w jakich plikach szukaliśmy (np. „homepage HTML + gtm.js?id=...”) i jakiego wzorca. CSM może otworzyć te same pliki i sprawdzić to sam w minutę.
+
+## Czego nie zdążyłem sprawdzić
+
+Po dodaniu I, J i linijki „not found” test wykrywania przeszedł 50 z 50. Potem w triale n8n skończył się limit uruchomień, więc testu szkiców AI nie puściłem już na tych nowych alertach. Szkice w repo są z wcześniejszego przebiegu. Kod szkiców się nie zmienił, ale uczciwie: ta kombinacja nie jest przetestowana.
+
 ## Co nie przeszło za pierwszym razem
 
 1. Test zatrzymywał się po dniu 1. Węzeł wywołujący skaner nic nie zwracał, bo ostatni węzeł skanera był filtrem bez wyników, więc pętla nie szła dalej. Dodałem do skanera końcowy węzeł „Run finished” i ustawienie, żeby wywołanie zawsze coś zwracało. Sam skaner liczył dobrze.
@@ -61,7 +74,7 @@ Detection has to be repeatable and explainable. A rule gives the same answer on 
 Three ways. I only count `<script>` tags that actually run, so text, links and JSON-LD on a blog post are ignored. A change must show on two successful scans in a row. And a 500 error or a 403 block never becomes an alert: the day is skipped or marked "cannot check".
 
 **3. Why do you look inside Google Tag Manager?**
-Marketing teams often add tools through GTM without touching the site code. The page HTML stays the same, so a scanner that only reads HTML would miss it. I read the GTM ID from the page, fetch the container and check the tags inside it. One of my eight test scenarios is exactly this.
+Marketing teams often add tools through GTM without touching the site code. The page HTML stays the same, so a scanner that only reads HTML would miss it. I read the GTM ID from the page, fetch the container and check the tags inside it. One of my ten test scenarios is exactly this.
 
 **4. Is it ethical to check a client's website?**
 It only reads public files any browser downloads, once a day, with an honest user agent. It never logs in, and when a site blocks it with a 403, it stops and marks the site "cannot check" instead of working around the block. The client email never mentions the check or a competitor; it offers help or value, and a person approves it first.
